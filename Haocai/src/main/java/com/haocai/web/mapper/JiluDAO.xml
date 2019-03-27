@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.JiluDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.Jilu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="eid" jdbcType="VARCHAR" property="eid" />
+    <result column="bname" jdbcType="VARCHAR" property="bname" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="tname" jdbcType="VARCHAR" property="tname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, eid, bname, cname, tname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jilu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jilu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.haocai.web.mod.Jilu">
+    insert into jilu (id, eid, bname, 
+      cname, tname)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=VARCHAR}, #{bname,jdbcType=VARCHAR}, 
+      #{cname,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.Jilu">
+    insert into jilu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="bname != null">
+        bname,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="tname != null">
+        tname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null">
+        #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        #{tname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.Jilu">
+    update jilu
+    <set>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null">
+        bname = #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.Jilu">
+    update jilu
+    set eid = #{eid,jdbcType=VARCHAR},
+      bname = #{bname,jdbcType=VARCHAR},
+      cname = #{cname,jdbcType=VARCHAR},
+      tname = #{tname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

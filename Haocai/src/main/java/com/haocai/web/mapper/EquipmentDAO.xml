@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.EquipmentDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.Equipment">
+    <id column="eid" jdbcType="VARCHAR" property="eid" />
+    <result column="categary" jdbcType="VARCHAR" property="categary" />
+    <result column="gettime" jdbcType="DATE" property="gettime" />
+    <result column="ard" jdbcType="VARCHAR" property="ard" />
+    <result column="usetime" jdbcType="DATE" property="usetime" />
+    <result column="yr" jdbcType="VARCHAR" property="yr" />
+    <result column="fixed" jdbcType="VARCHAR" property="fixed" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    eid, categary, gettime, ard, usetime, yr, fixed
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where eid = #{eid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from equipment
+    where eid = #{eid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.haocai.web.mod.Equipment">
+    insert into equipment (eid, categary, gettime, 
+      ard, usetime, yr, fixed
+      )
+    values (#{eid,jdbcType=VARCHAR}, #{categary,jdbcType=VARCHAR},gettime = now(), 
+      #{ard,jdbcType=VARCHAR}, #{usetime,jdbcType=DATE}, #{yr,jdbcType=VARCHAR}, #{fixed,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.Equipment">
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="categary != null">
+        categary,
+      </if>
+      <if test="gettime != null">
+        gettime,
+      </if>
+      <if test="ard != null">
+        ard,
+      </if>
+      <if test="usetime != null">
+        usetime,
+      </if>
+      <if test="yr != null">
+        yr,
+      </if>
+      <if test="fixed != null">
+        fixed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eid != null">
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="categary != null">
+        #{categary,jdbcType=VARCHAR},
+      </if>
+      <if test="gettime != null">
+        #{gettime,jdbcType=DATE},
+      </if>
+      <if test="ard != null">
+        #{ard,jdbcType=VARCHAR},
+      </if>
+      <if test="usetime != null">
+        #{usetime,jdbcType=DATE},
+      </if>
+      <if test="yr != null">
+        #{yr,jdbcType=VARCHAR},
+      </if>
+      <if test="fixed != null">
+        #{fixed,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.Equipment">
+    update equipment
+    <set>
+      <if test="categary != null">
+        categary = #{categary,jdbcType=VARCHAR},
+      </if>
+      <if test="gettime != null">
+        gettime = #{gettime,jdbcType=DATE},
+      </if>
+      <if test="ard != null">
+        ard = #{ard,jdbcType=VARCHAR},
+      </if>
+      <if test="usetime != null">
+        usetime = #{usetime,jdbcType=DATE},
+      </if>
+      <if test="yr != null">
+        yr = #{yr,jdbcType=VARCHAR},
+      </if>
+      <if test="fixed != null">
+        fixed = #{fixed,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eid = #{eid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.Equipment">
+    update equipment
+    set categary = #{categary,jdbcType=VARCHAR},
+      gettime = #{gettime,jdbcType=DATE},
+      ard = #{ard,jdbcType=VARCHAR},
+      usetime = #{usetime,jdbcType=DATE},
+      yr = #{yr,jdbcType=VARCHAR},
+      fixed = #{fixed,jdbcType=VARCHAR}
+    where eid = #{eid,jdbcType=VARCHAR}
+  </update>
+</mapper>

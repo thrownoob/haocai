@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.TnaDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.Tna">
+    <id column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="enumber" jdbcType="INTEGER" property="enumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ename, enumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tna
+    where ename = #{ename,jdbcType=VARCHAR}
+  </select>
+    <select id="gettna" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
+  ename
+  from tna
+  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tna
+    where ename = #{ename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.haocai.web.mod.Tna">
+    insert into tna (ename, enumber)
+    values (#{ename,jdbcType=VARCHAR}, #{enumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.Tna">
+    insert into tna
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ename != null">
+        ename,
+      </if>
+      <if test="enumber != null">
+        enumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="enumber != null">
+        #{enumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.Tna">
+    update tna
+    <set>
+      <if test="enumber != null">
+        enumber = #{enumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ename = #{ename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.Tna">
+    update tna
+    set enumber = #{enumber,jdbcType=INTEGER}
+    where ename = #{ename,jdbcType=VARCHAR}
+  </update>
+</mapper>

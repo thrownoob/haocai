@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.CatDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.Cat">
+    <id column="categary" jdbcType="VARCHAR" property="categary" />
+    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="cnumber" jdbcType="INTEGER" property="cnumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    categary, ename, cnumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cat
+    where categary = #{categary,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getalcr" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
+  categary
+  from cat
+  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cat
+    where categary = #{categary,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.haocai.web.mod.Cat">
+    insert into cat (categary, ename, cnumber
+      )
+    values (#{categary,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{cnumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.Cat">
+    insert into cat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categary != null">
+        categary,
+      </if>
+      <if test="ename != null">
+        ename,
+      </if>
+      <if test="cnumber != null">
+        cnumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categary != null">
+        #{categary,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="cnumber != null">
+        #{cnumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.Cat">
+    update cat
+    <set>
+      <if test="ename != null">
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="cnumber != null">
+        cnumber = #{cnumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where categary = #{categary,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.Cat">
+    update cat
+    set ename = #{ename,jdbcType=VARCHAR},
+      cnumber = #{cnumber,jdbcType=INTEGER}
+    where categary = #{categary,jdbcType=VARCHAR}
+  </update>
+</mapper>
