@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.haocai.web.mod.Cat;
+import com.haocai.web.mod.Equipment;
+import com.haocai.web.mod.Jilu;
 import com.haocai.web.mod.Tna;
 
 /**
@@ -22,11 +24,17 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
 
     Model selectByPrimaryKey(PK id);
 
-    int updateByPrimaryKeySelective(Model record);
+    int updateByPrimaryKeySelective(HashMap<String, Object> map);
 
     int updateByPrimaryKey(Model record);
     
     List<Cat> getalcr();
     
     List<Tna> gettna();
+    
+    List<Equipment> getequ();
+    
+    List<Equipment> getdny(Equipment que);
+    
+    List<Jilu> getjilu(String a);//根据EID查纪录
 }

@@ -16,7 +16,7 @@ public class Equipment implements Serializable {
 
     private String ard;
 
-    private Date usetime;
+    private String usetime;
 
     private String yr;
 
@@ -56,11 +56,11 @@ public class Equipment implements Serializable {
         this.ard = ard;
     }
 
-    public Date getUsetime() {
+    public String getUsetime() {
         return usetime;
     }
 
-    public void setUsetime(Date usetime) {
+    public void setUsetime(String usetime) {
         this.usetime = usetime;
     }
 

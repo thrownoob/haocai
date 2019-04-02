@@ -6,7 +6,7 @@
     <result column="categary" jdbcType="VARCHAR" property="categary" />
     <result column="gettime" jdbcType="DATE" property="gettime" />
     <result column="ard" jdbcType="VARCHAR" property="ard" />
-    <result column="usetime" jdbcType="DATE" property="usetime" />
+    <result column="usetime" jdbcType="VARCHAR" property="usetime" />
     <result column="yr" jdbcType="VARCHAR" property="yr" />
     <result column="fixed" jdbcType="VARCHAR" property="fixed" />
   </resultMap>
@@ -19,6 +19,36 @@
     from equipment
     where eid = #{eid,jdbcType=VARCHAR}
   </select>
+  
+ <select id="getequ" parameterType="java.lang.String" resultMap="BaseResultMap">
+ select
+ eid
+ from equipment
+    <if test="eid != null">
+        eid = #{eid,jdbcType=VARCHAR}
+      </if>
+ </select>
+ <select id="getdny" parameterType= "java.lang.String" resultMap="BaseResultMap">
+ select 
+ <include refid="Base_Column_List" />
+ from equipment
+ where 1=1
+ <if test="eid !=''">
+ and eid= #{eid,jdbcType=VARCHAR}
+ </if>
+  <if test="categary !=''">
+ and  categary=#{categary,jdbcType=VARCHAR}
+ </if>
+ <if test="yr !=''">
+  and yr=#{yr,jdbcType=VARCHAR}
+ </if>
+ <if test="ard !=''">
+ and  ard=#{ard,jdbcType=VARCHAR}
+ </if>
+ <if test="fixed !=''">
+ and fixed=#{fixed,jdbcType=VARCHAR}
+ </if>
+</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from equipment
     where eid = #{eid,jdbcType=VARCHAR}
@@ -27,8 +57,8 @@
     insert into equipment (eid, categary, gettime, 
       ard, usetime, yr, fixed
       )
-    values (#{eid,jdbcType=VARCHAR}, #{categary,jdbcType=VARCHAR},gettime = now(), 
-      #{ard,jdbcType=VARCHAR}, #{usetime,jdbcType=DATE}, #{yr,jdbcType=VARCHAR}, #{fixed,jdbcType=VARCHAR}
+    values (#{eid,jdbcType=VARCHAR}, #{categary,jdbcType=VARCHAR},now(), 
+      #{ard,jdbcType=VARCHAR}, #{usetime,jdbcType=VARCHAR}, #{yr,jdbcType=VARCHAR}, #{fixed,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.Equipment">
@@ -70,7 +100,7 @@
         #{ard,jdbcType=VARCHAR},
       </if>
       <if test="usetime != null">
-        #{usetime,jdbcType=DATE},
+        #{usetime,jdbcType=VARCHAR},
       </if>
       <if test="yr != null">
         #{yr,jdbcType=VARCHAR},
@@ -87,16 +117,16 @@
         categary = #{categary,jdbcType=VARCHAR},
       </if>
       <if test="gettime != null">
-        gettime = #{gettime,jdbcType=DATE},
+        gettime = #{gettime,jdbcType=DATA},
       </if>
       <if test="ard != null">
         ard = #{ard,jdbcType=VARCHAR},
       </if>
       <if test="usetime != null">
-        usetime = #{usetime,jdbcType=DATE},
+        usetime = #{usetime,jdbcType=VARCHAR},
       </if>
-      <if test="yr != null">
-        yr = #{yr,jdbcType=VARCHAR},
+      <if test="yr == null">
+        yr = "已启用",
       </if>
       <if test="fixed != null">
         fixed = #{fixed,jdbcType=VARCHAR},
@@ -109,7 +139,7 @@
     set categary = #{categary,jdbcType=VARCHAR},
       gettime = #{gettime,jdbcType=DATE},
       ard = #{ard,jdbcType=VARCHAR},
-      usetime = #{usetime,jdbcType=DATE},
+      usetime = #{usetime,jdbcType=VARCHAR},
       yr = #{yr,jdbcType=VARCHAR},
       fixed = #{fixed,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=VARCHAR}

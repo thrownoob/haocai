@@ -17,6 +17,12 @@
     from jilu
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="getjilu" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jilu
+    where eid = #{eid,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from jilu
     where id = #{id,jdbcType=INTEGER}

@@ -1,11 +1,12 @@
 $(function () {
-    
-	$.ajax({
+    //页面打开时执行
+	
+	$.ajax({//查询种类
 		type:"post",
 		url:"http://localhost:8080/Haocai/cat/catsec",
 		success:function(data){
 		
-			  var unitObj=document.getElementById("categary");
+			  var unitObj=document.getElementById("categary2");
 			  if(data!=null){ //后台传回来的select选项
 				  
 	                for(var i=0;i<data.length;i++){
@@ -17,12 +18,12 @@ $(function () {
 		}
 	})
 	    
-	$.ajax({
+	$.ajax({//查询型号
 		type:"post",
 		url:"http://localhost:8080/Haocai/tna/gettna",
 		success:function(data){
 	
-			  var unitObj=document.getElementById("ename");
+			  var unitObj=document.getElementById("ename2");
 			  if(data!=null){ //后台传回来的select选项
 				  
 	                for(var i=0;i<data.length;i++){
@@ -33,6 +34,25 @@ $(function () {
 
 		}
 	})
+	
+		$.ajax({//查询id
+		type:"post",
+		url:"http://localhost:8080/Haocai/equ/equget",
+		success:function(data){
+		
+			  var unitObj=document.getElementById("eid2");
+			  if(data!=null){ //后台传回来的select选项
+				  
+	                for(var i=0;i<data.length;i++){
+	                    //遍历后台传回的结果，一项项往select中添加option
+	                    unitObj.options.add(new Option(data[i].eid,data[i].eid));
+	                }
+	            }
+
+		}
+	})
+	
+
     $('#add_btn').click(function () {//出入库按钮
         methods.addHandle()
     })
@@ -49,19 +69,27 @@ $(function () {
     	$("#tb  tr:not(:first)").html("");
         methods.seachName();
     })
+        $('#searchequ').click(function () {//记录查询按钮
+    	 
+    	$("#tb  tr:not(:first)").html("");
+        methods.s1equ();
+    })
+    
     $('#search_btn1').click(function () {//余量查询
     	$("#tb  tr:not(:first)").html("");
    methods.seachName1();
     })
-      $('#inse_btn').click(function () {//余量查询
-       methods.addtna();
-    })
+  
         $('#inse1_btn').click(function () {//余量查询
        methods.addcat();
     })
     $('#inse2_btn').click(function () {//余量查询
     	alert(1111);
        methods.addequ();
+    })
+      $('#inse3_btn').click(function () {//余量查询
+    	alert(1111);
+       methods.addjilu();
     })
     $('#back_btn').click(function () {
         $('.form-control').val(' ');
@@ -80,9 +108,44 @@ $(function () {
         $('#xztb input').val(' ');
         $('#xztb select').find('option:first').prop('selected', true)
     });
-
+	//导航
+    $('.type-right').click(function(){
+        $(this).prev('.type-left').toggleClass('showListType')
+    });
+    $('.type-left ul li').click(function(){
+        $(this).addClass('active').siblings('li').removeClass('active')
+    })
 })
 
+    function b1(eid){//table内按钮查询记录弹出
+    	alert(eid);
+	$.ajax({
+		type:"post",
+		url:"http://localhost:8080/Haocai/jilu/sejilu?a="+eid,
+		data: {},
+		dataType:"json",
+		success:function(data){
+			bootbox.alert({
+                title: "@gua",
+                message: "<div class='table-wrapper'><table class='fl-table' id='jilutab' class=’table‘> <thead><tr> <th>姓名</th> <th>支行</th><th>数量</th> <th>操作员</th></tr> </thead></table><div>",
+                
+            })
+            
+               $.each(data,function(index,item){
+            var tr;
+            tr += "<th>" + item.eid + "</th>";
+            tr += "<th>" + item.bname+ "</th>";
+            tr += "<th>" + item.cname + "</th>";
+            tr += "<th>" + item.tname + "</th>";
+    
+            $("#jilutab").append("<tr>"+tr+"</tr>");
+		})
+               },
+		error:function(){
+			alert("2");
+		}
+	})
+}
 var addEnter = true,
     noRepeat = true,
     jobArr = [],
@@ -94,7 +157,36 @@ var addEnter = true,
     tarSel = $('#xztb select');
 
 var methods = {
-		
+	
+		addjilu:function(){
+			$.ajax({
+				type:"post",
+	    		url:"http://localhost:8080/Haocai/jilu/jiluins",
+	    		 data: $('#fd4').serialize(),
+	    		dataType:"json",
+	    		success:function(data){
+	    			if(data=='1'){
+	    				alert("成");
+	    				$.ajax({
+	    					type:"post",
+	    		    		url:"http://localhost:8080/Haocai/equ/equupt",
+	    		    		 data: $('#fd4').serialize(),
+	    		    		dataType:"json",
+	    		    		success:function(data1){
+	    		    			if(data1=='1'){
+	    		    				alert("功");
+	    		    			}else{
+	    		    				alert("改变状态失败");
+	    		    			}
+	    		    		},
+	    				 error : function(){
+	    	    			 alert("2");
+	    	    		 }
+	    				})
+	    			}
+	    		}
+			})
+		},
 		addcat:function(){
 			$.ajax({
 	    		type:"post",
@@ -125,7 +217,7 @@ var methods = {
     			 if(data == '1'){
     				 alert("成功");
     			 }
-    			 if(data=='2'){
+    			 if(data=='0'){
     				 alert("库内已有");
     			 }
     			
@@ -138,7 +230,47 @@ var methods = {
    			
    
 	},
-
+   s1equ:function(){
+	   $.ajax({
+		   type:"post",
+		   url:"http://localhost:8080/Haocai/equ/equdny",
+		   dataType:"json",
+		   data:$('#s1form').serialize(),
+		   success:function(data){
+			   alert(data);
+			   $.each(data,function(index,item){
+				 
+				   if(data== " "){
+					  
+	    				bootbox.alert({
+	    	                title: "@gua",
+	    	                message: "无此记录",
+	    	                
+	    	            })
+				   }
+				   else{
+		    			  var tr;
+		    	            tr += "<th>" + item.eid + "</th>";
+	                        tr += "<th>" + item.categary+ "</th>";
+	                        tr += "<th>" + item.ard + "</th>";
+	                        tr += "<th>" + item.gettime + "</th>";
+	                        tr += "<th>" + item.usetime + "</th>";
+	                        tr += "<th>" + item.yr + "</th>";
+	                        tr += "<th>" + item.fixed + "</th>";
+	                        tr += "<th>" + "<button type='button'  onclick='b1("+item.eid+")'  class='btn btn-primary search_btn' id=‘s1b’>获取记录</button>"+ "</th>";
+		    	            $("#tb").append("<tr>"+tr+"</tr>");
+				   }
+			   })
+		   },
+	   
+	   error:function(){
+		alert("1");   
+	   }
+		   })
+		   
+	   
+ 
+   },
     addHandle: function (the_index) {//出入库
     	
     	 
