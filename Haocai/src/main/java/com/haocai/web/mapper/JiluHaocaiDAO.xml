@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.JiluHaocaiDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.JiluHaocai">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="ttime" jdbcType="DATE" property="ttime" />
+    <result column="tnumber" jdbcType="INTEGER" property="tnumber" />
+    <result column="tzhihang" jdbcType="VARCHAR" property="tzhihang" />
+    <result column="tname" jdbcType="VARCHAR" property="tname" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="tip" jdbcType="INTEGER" property="tip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, `name`, ttime, tnumber, tzhihang, tname, cname, tip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jilu_haocai
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jilu_haocai
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.haocai.web.mod.JiluHaocai">
+    insert into jilu_haocai (tid, `name`, ttime, 
+      tnumber, tzhihang, tname, 
+      cname, tip)
+    values (#{tid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{ttime,jdbcType=DATE}, 
+      #{tnumber,jdbcType=INTEGER}, #{tzhihang,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, 
+      #{cname,jdbcType=VARCHAR}, #{tip,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.JiluHaocai">
+    insert into jilu_haocai
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="ttime != null">
+        ttime,
+      </if>
+      <if test="tnumber != null">
+        tnumber,
+      </if>
+      <if test="tzhihang != null">
+        tzhihang,
+      </if>
+      <if test="tname != null">
+        tname,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="tip != null">
+        tip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ttime != null">
+        #{ttime,jdbcType=DATE},
+      </if>
+      <if test="tnumber != null">
+        #{tnumber,jdbcType=INTEGER},
+      </if>
+      <if test="tzhihang != null">
+        #{tzhihang,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tip != null">
+        #{tip,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.JiluHaocai">
+    update jilu_haocai
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ttime != null">
+        ttime = #{ttime,jdbcType=DATE},
+      </if>
+      <if test="tnumber != null">
+        tnumber = #{tnumber,jdbcType=INTEGER},
+      </if>
+      <if test="tzhihang != null">
+        tzhihang = #{tzhihang,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="tip != null">
+        tip = #{tip,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.JiluHaocai">
+    update jilu_haocai
+    set `name` = #{name,jdbcType=VARCHAR},
+      ttime = #{ttime,jdbcType=DATE},
+      tnumber = #{tnumber,jdbcType=INTEGER},
+      tzhihang = #{tzhihang,jdbcType=VARCHAR},
+      tname = #{tname,jdbcType=VARCHAR},
+      cname = #{cname,jdbcType=VARCHAR},
+      tip = #{tip,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

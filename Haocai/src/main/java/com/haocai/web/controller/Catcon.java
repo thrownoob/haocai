@@ -35,5 +35,13 @@ public class Catcon {
 		
 		
 	}
+	@RequestMapping(value="/getallCats",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<Cat> getallCats(Cat cat){
+		return catservice.getcatdn(cat);
+		
+		
+		
+	}
 
 }

@@ -24,9 +24,7 @@ public class TnaserviceImp implements Tnaservice {
 			 HashMap<String, Object> map=new HashMap<String, Object>();
 			 map.put("ename", ta.getEname());
 			 if(this.tnaDao.selectByPrimaryKey(ta.getEname())== null ) {
-				 
-				 map.put("enumber", ta.getEnumber());
-					return this.tnaDao.insert(map);
+				 return this.tnaDao.insert(map);
 			 }
 			 return 2;
 		}
@@ -34,9 +32,17 @@ public class TnaserviceImp implements Tnaservice {
 
 
 
-		public List<Tna> gettna() {
+		public List<Tna> gettna(Tna a) {
 			// TODO Auto-generated method stub
-			return this.tnaDao.gettna();
+			return this.tnaDao.gettna(a);
+		}
+
+
+
+
+		public List<Tna> getnames() {
+			// TODO Auto-generated method stub
+			return this.tnaDao.getnames();
 		}
 
 

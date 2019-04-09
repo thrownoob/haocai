@@ -28,5 +28,9 @@ public List<Cat> getkey() {
 		// TODO Auto-generated method stub
 		return this.catDao.getalcr();
 	}
+public List<Cat> getcatdn(Cat cat) {
+	// TODO Auto-generated method stub
+	return this.catDao.getcatdn(cat);
+}
 
 }

@@ -9,6 +9,7 @@ import com.haocai.web.mod.Cat;
 import com.haocai.web.mod.Equipment;
 import com.haocai.web.mod.Jilu;
 import com.haocai.web.mod.Tna;
+import com.haocai.web.mod.User;
 
 /**
  * DAO公共基类，由MybatisGenerator自动生成请勿修改
@@ -29,12 +30,18 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     int updateByPrimaryKey(Model record);
     
     List<Cat> getalcr();
+    //条件查询种类
+    List<Tna> gettna(Tna ta);
+    //查询种类名称
+    List<Tna> getnames();
     
-    List<Tna> gettna();
+    List<Cat> getcatdn(Cat cat);
     
     List<Equipment> getequ();
     
     List<Equipment> getdny(Equipment que);
     
     List<Jilu> getjilu(String a);//根据EID查纪录
+    
+    User loginCheck(User user);
 }

@@ -1,12 +1,12 @@
 $(function () {
     //页面打开时执行
 	
-	$.ajax({//查询种类
+	$.ajax({//查询型号 下拉选择
 		type:"post",
 		url:"http://localhost:8080/Haocai/cat/catsec",
 		success:function(data){
 		
-			  var unitObj=document.getElementById("categary2");
+			  var unitObj=document.getElementById("categary1");
 			  if(data!=null){ //后台传回来的select选项
 				  
 	                for(var i=0;i<data.length;i++){
@@ -18,24 +18,7 @@ $(function () {
 		}
 	})
 	    
-	$.ajax({//查询型号
-		type:"post",
-		url:"http://localhost:8080/Haocai/tna/gettna",
-		success:function(data){
-	
-			  var unitObj=document.getElementById("ename2");
-			  if(data!=null){ //后台传回来的select选项
-				  
-	                for(var i=0;i<data.length;i++){
-	                    //遍历后台传回的结果，一项项往select中添加option
-	                    unitObj.options.add(new Option(data[i].ename,data[i].ename));
-	                }
-	            }
-
-		}
-	})
-	
-		$.ajax({//查询id
+$.ajax({//查询id
 		type:"post",
 		url:"http://localhost:8080/Haocai/equ/equget",
 		success:function(data){
@@ -54,7 +37,7 @@ $(function () {
 	
 
     $('#add_btn').click(function () {//出入库按钮
-        methods.addHandle()
+        methods.addequ();
     })
 
     $('#show_tbody').on('click','.edit', function () {
@@ -97,6 +80,10 @@ $(function () {
         window.location.reload();
         methods.resectList();
     })
+    
+    $('#loginuser').click(function(){
+    	methods.Login();
+    })
 
     $('.del').click(function () {
         $(this).parents('tr').remove();
@@ -116,7 +103,17 @@ $(function () {
         $(this).addClass('active').siblings('li').removeClass('active')
     })
 })
-
+    function Login(){
+	$.ajax({
+		type:"post",
+		url:"http://localhost:8080/Haocai/login",
+		dataTupe:"json",
+		data:$('#login').serialize(),
+		success:function(data){
+		alert(data);
+		}
+	})
+}
     function b1(eid){//table内按钮查询记录弹出
     	alert(eid);
 	$.ajax({
@@ -187,31 +184,12 @@ var methods = {
 	    		}
 			})
 		},
-		addcat:function(){
-			$.ajax({
-	    		type:"post",
-	    		url:"http://localhost:8080/Haocai/cat/catins",
-	    		 data: $('#fd2').serialize(),
-	    		dataType:"json",
-	    		 success : function(data){
-	    			 if(data == '1'){
-	    				 alert("成功");
-	    			 }
-	    			 if(data=='2'){
-	    				 alert("库内已有");
-	    			 }
-	    			
-	    		 },
-	    		 error : function(){
-	    			 alert("2");
-	    		 }
-	    	})
-		},
+	
 	addequ:function(){
 		$.ajax({
     		type:"post",
     		url:"http://localhost:8080/Haocai/equ/equins",
-    		 data: $('#fd3').serialize(),
+    		 data: $('#equ_add').serialize(),
     		dataType:"json",
     		 success : function(data){
     			 if(data == '1'){
@@ -235,9 +213,17 @@ var methods = {
 		   type:"post",
 		   url:"http://localhost:8080/Haocai/equ/equdny",
 		   dataType:"json",
-		   data:$('#s1form').serialize(),
+		   data:$('#equ_se').serialize(),
 		   success:function(data){
 			   alert(data);
+			   if(data== "1"){
+				   bootbox.alert({
+   	                title: "@gua",
+   	                message: "未登陆",
+   	                
+   	            })
+   	     	window.location.href="http://localhost:8080/Haocai/";
+				}
 			   $.each(data,function(index,item){
 				 
 				   if(data== " "){
@@ -264,7 +250,10 @@ var methods = {
 		   },
 	   
 	   error:function(data){
-		alert(data);   
+		
+		if(data== "1"){
+			window.location.href="http://localhost:8080/Haocai/Login.jsp";
+		}
 	   }
 		   })
 		   

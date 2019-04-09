@@ -58,9 +58,9 @@
 
 <div class="box">
 
-   <form id="s1form">
+   <form id="equ_se">
     <div class="title">耗材出入库查询</div>
-    <div class="content">
+    
         
         <div class="container content_width">
             <div class="person_search">
@@ -71,7 +71,7 @@
                           <span>型号：</span>
                         <input id="categary" name="categary" onkeyup="this.value=this.value.replace(/\s+/g,'')" type="text" class="form-control" >
                          <span>状态：</span>
-                        <select id=yr name="yr" class="form-control" style="font-size: 13px; color: #666;">
+                        <select id="yr"name="yr" class="form-control" style="font-size: 13px; color: #666;">
                                             <option value="已启用">已启用</option>
 	                                        <option value="报废">报废</option>
 	                                         <option value="出借">出借</option>
@@ -98,7 +98,7 @@
         </div>
         </form>
 
-        <form action="" id="form2">
+        <form action="" id="equ_add">
         <div class="export">
             <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
                 <img src="img/add_two.png"/>
@@ -116,33 +116,27 @@
                
                                 <tbody>
                                 <tr>
-                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>名称/型号</label>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>编号</label>
                                     </td>
-                                    <td><input class="Name" id="aname" name="aname" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
-                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>支行</label>
-                                    </td>
-                                    <td><input class="Zhi" type="text" id="atzhihang" name="atzhihang" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入支行"/></td>
+                                    <td><input class="eid" id="eid" name="eid" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
+                                    
+                                      <td class="tb_bg"><label for="">型号</label></td>
+                                      <td>
+                                    <select id="categary1" name="categary" class="form-control" style="font-size: 13px; color: #666;">
+                                            <option >请选择型号</option>
+	                               </select>
+	                                  </td>
                                 </tr>
+                            
                                 <tr>
-                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>数量</label>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>现所在</label>
                                     </td>
-                                    <td><input class="Number" type="text" id="tnumber" name="tnumber" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
-                                    <td class="tb_bg"><label for="">操作员</label></td>
-                                    <td><input class="Cname" type="text" name="cname" id="cname" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
+                                    <td><input class="ard" type="text" id="ard" name="ard" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
+                                    <td class="tb_bg"><label for="">状态</label></td>
+                                    <td><input class="yr" type="text" name="yr" id="yr" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
                                    
                                 </tr>
-                                <tr>
-                                    <td class="tb_bg"><label for="">操作</label></td>
-                                    <td>
-                                        <select id="tip" name="tip" class="form-control" style="font-size: 13px; color: #666;">
-                                            <option value="0">入库</option>
-	                                        <option value="1">出库</option>
-	                                         <option value="10">新增</option>
-                                        </select>
-                                    </td>
-                                    <td class="tb_bg"><label for="">领取人</label></td>
-                                    <td><input class="Tname" type="text" name="tname" id="tname" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
-                                </tr>
+                  
                                 </tbody>
                             </table>
                         </div>
@@ -155,7 +149,63 @@
             </div>
         </div>
         </form>
-
+   <form action="" id="equ_up">
+        <div class="export">
+            <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
+                <img src="img/add_two.png"/>
+                <span>启用</span>
+            </button>
+            <div class="modal fade" id="renyuan">
+                <div class="modal-dialog modal-lg modal_position">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">启用</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="xztb" class="table">
+               
+                                <tbody>
+                                
+                                
+                                <tr>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>编号</label>
+                                    <td>
+                                       <select id="eid2" name="eid" class="form-control" style="font-size: 13px; color: #666;">
+                                            <option >请选择</option>
+	                               </select>
+	                               </td>
+                             
+                                    
+                                      <td class="tb_bg"><label for="">型号</label></td>
+                                      <td>
+                                    <select id="categary1" name="categary" class="form-control" style="font-size: 13px; color: #666;">
+                                            <option >请选择型号</option>
+	                               </select>
+	                                  </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>现所在</label>
+                                    </td>
+                                    <td><input class="ard" type="text" id="ard" name="ard" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
+                                    <td class="tb_bg"><label for="">状态</label></td>
+                                    <td><input class="yr" type="text" name="yr" id="yr" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
+                                   
+                                </tr>
+                  
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
         <table id="tb" class="table">
             <thead>
             <tr>
@@ -179,6 +229,6 @@
 
 
 
-<script src="js/mejs.js"></script>
+<script src="js/shebei.js"></script>
 </body>
 </html>

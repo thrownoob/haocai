@@ -16,9 +16,16 @@
   </select>
     <select id="gettna" parameterType="java.lang.String" resultMap="BaseResultMap">
   select
+   <include refid="Base_Column_List" />
+  from tna
+  <if test="ename !=''">
+  where ename = #{ename,jdbcType=VARCHAR}
+  </if>
+  </select>
+  <select id="getnames" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
   ename
   from tna
-  
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from tna

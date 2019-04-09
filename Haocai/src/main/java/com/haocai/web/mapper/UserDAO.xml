@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haocai.web.dao.UserDAO">
+  <resultMap id="BaseResultMap" type="com.haocai.web.mod.User">
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="td" jdbcType="VARCHAR" property="td" />
+  </resultMap>
+  <select id="loginCheck" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select * from
+  user
+  where
+  username= #{username,jdbcType=VARCHAR}
+  and
+  password=#{password,jdbcType=VARCHAR}
+  
+  </select>
+  <insert id="insert" parameterType="com.haocai.web.mod.User">
+    insert into user (username, `password`, td
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{td,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haocai.web.mod.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="td != null">
+        td,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="td != null">
+        #{td,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

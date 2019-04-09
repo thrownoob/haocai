@@ -8,6 +8,6 @@ import com.haocai.web.mod.Tna;
 public interface Tnaservice {
 
 	public int inse(Tna ta); 
-	public List<Tna> gettna();
-
+	public List<Tna> gettna(Tna a);
+   public List<Tna>  getnames();
 }

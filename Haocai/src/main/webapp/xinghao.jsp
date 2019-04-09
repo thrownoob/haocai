@@ -55,8 +55,10 @@
             <div class="person_search">
                 <div class="search_input">
                     <div class="input-group mb-3">
-                        <span>名称/型号：</span>
-                      <input id="ename" name="ename"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请输入型号">
+                        <span>种类：</span>
+                      <input id="categary" name="categary"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请输入型号">
+                       <span>名称/型号：</span>
+                     
                     </div>
                 </div>
               
@@ -88,8 +90,14 @@
                                 <tr>
                                     <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>种类</label>
                                     </td>
-                                    <td><input class="ename" id="ename" name="ename" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
-                            
+                                    <td>
+                                    <select id="ename" name="ename" class="form-control" style="font-size: 13px; color: #666;">
+                                            <option ></option>
+	                                       
+                                        </select></td>
+                                        <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>型号</label>
+                                    </td>
+                                    <td><input class="categary" id="categary" name="categary" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
                                 </tr>
                             
                                 </tbody>
@@ -119,7 +127,7 @@
     </div>
 </div>
 
-<script src="js/zhonglei.js"></script>
+<script src="js/xinghao.js"></script>
 </body>
 
 </html>

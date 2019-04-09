@@ -7,4 +7,5 @@ import com.haocai.web.mod.Jilu;
 public interface Jiluservice {
    public int jiluins(Jilu jilu);
    public List<Jilu> sejilu(String a);
+
 }

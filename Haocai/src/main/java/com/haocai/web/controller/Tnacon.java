@@ -22,14 +22,21 @@ public class Tnacon {
 	public  int getEmpsWithJson(Tna ta) {
 	
 		int a=tnaservice.inse(ta);
-		System.out.println(a);
 	return a;
 }
 	
 	@RequestMapping(value="/gettna",produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public List<Tna> getcats(){
-		return tnaservice.gettna();
+	public List<Tna> getcats(Tna a){
+		return tnaservice.gettna(a);
+		
+		
+		
+	}
+	@RequestMapping(value="/getname",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public List<Tna> getnames(){
+		return tnaservice.getnames();
 		
 		
 		

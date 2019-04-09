@@ -8,5 +8,5 @@ public interface Catservice {
 	public int inse(Cat cat); 
    
     public List<Cat> getkey();
-    
+    public List<Cat> getcatdn(Cat cat);
 }
