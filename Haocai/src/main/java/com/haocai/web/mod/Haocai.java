@@ -1,7 +1,6 @@
 package com.haocai.web.mod;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * haocai
@@ -10,11 +9,11 @@ import java.util.Date;
 public class Haocai implements Serializable {
     private String name;
 
-    private Integer cid;
+    private String cid;
 
-    private Integer cnumber;
+    private String cnumber;
 
-    private Date ctime;
+    private String ctime;
 
     private static final long serialVersionUID = 1L;
 
@@ -26,27 +25,27 @@ public class Haocai implements Serializable {
         this.name = name;
     }
 
-    public Integer getCid() {
+    public String getCid() {
         return cid;
     }
 
-    public void setCid(Integer cid) {
+    public void setCid(String cid) {
         this.cid = cid;
     }
 
-    public Integer getCnumber() {
+    public String getCnumber() {
         return cnumber;
     }
 
-    public void setCnumber(Integer cnumber) {
+    public void setCnumber(String cnumber) {
         this.cnumber = cnumber;
     }
 
-    public Date getCtime() {
+    public String getCtime() {
         return ctime;
     }
 
-    public void setCtime(Date ctime) {
+    public void setCtime(String ctime) {
         this.ctime = ctime;
     }
 

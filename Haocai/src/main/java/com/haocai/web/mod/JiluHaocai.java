@@ -1,20 +1,19 @@
 package com.haocai.web.mod;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * jilu_haocai
  * @author 
  */
 public class JiluHaocai implements Serializable {
-    private Integer tid;
+    private String tid;
 
     private String name;
 
-    private Date ttime;
+    private String ttime;
 
-    private Integer tnumber;
+    private String tnumber;
 
     private String tzhihang;
 
@@ -22,15 +21,15 @@ public class JiluHaocai implements Serializable {
 
     private String cname;
 
-    private Integer tip;
+    private String tip;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getTid() {
+    public String getTid() {
         return tid;
     }
 
-    public void setTid(Integer tid) {
+    public void setTid(String tid) {
         this.tid = tid;
     }
 
@@ -42,19 +41,19 @@ public class JiluHaocai implements Serializable {
         this.name = name;
     }
 
-    public Date getTtime() {
+    public String getTtime() {
         return ttime;
     }
 
-    public void setTtime(Date ttime) {
+    public void setTtime(String ttime) {
         this.ttime = ttime;
     }
 
-    public Integer getTnumber() {
+    public String getTnumber() {
         return tnumber;
     }
 
-    public void setTnumber(Integer tnumber) {
+    public void setTnumber(String tnumber) {
         this.tnumber = tnumber;
     }
 
@@ -82,11 +81,11 @@ public class JiluHaocai implements Serializable {
         this.cname = cname;
     }
 
-    public Integer getTip() {
+    public String getTip() {
         return tip;
     }
 
-    public void setTip(Integer tip) {
+    public void setTip(String tip) {
         this.tip = tip;
     }
 

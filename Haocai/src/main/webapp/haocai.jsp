@@ -41,7 +41,7 @@
  <div class="change-type">
         <div class="type-left" :class="showType == true ? 'showListType':''">
             <ul>
-                <li><a href="allowance.jsp">余量查询</a><span></span></li>
+                <li><a href="http://localhost:8080/Haocai/allowance.jsp">余量查询</a><span></span></li>
                 <li class="active"><a>耗材出入库查询</a><span></span></li>
                 <li><a href="http://localhost:8080/Haocai/shebei.jsp">设备查询</a><span></span></li>
                 <li><a></a><span></span></li>
@@ -60,7 +60,7 @@
 
 <div class="box">
 
-   <form id="form1">
+   <form id="haocaijiluform">
     <div class="title">耗材出入库查询</div>
     <div class="content">
         <!--搜索输入框及查询、重置按钮-->
@@ -96,7 +96,46 @@
         </div>
         </form>
         <!--添加按钮及bootstrap的模态框-->
-        <form action="" id="form2">
+        <form action="" id="addform">
+        <div class="export">
+            <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
+                <img src="img/add_two.png"/>
+                <span>新增</span>
+            </button>
+            <div class="modal fade" id="renyuan">
+                <div class="modal-dialog modal-lg modal_position">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">新增</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="xztb" class="table">
+                                <!--新修改弹窗的样式-->
+                                <tbody>
+                                <tr>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>名称/型号</label>
+                                    </td>
+                                    <td><input class="Name" id="name" name="name" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
+                                   <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>数量</label>
+                                    </td>
+                                    <td><input class="Number" type="text" id="tnumber" name="tnumber" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
+                                  
+                                </tr>
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+                <form action="" id="form2">
         <div class="export">
             <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
                 <img src="img/add_two.png"/>
@@ -143,7 +182,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                             <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
@@ -175,6 +214,6 @@
     </div>
 </div>
 
-<script src="js/mejs.js"></script>
+<script src="js/haocai.js"></script>
 </body>
 </html>

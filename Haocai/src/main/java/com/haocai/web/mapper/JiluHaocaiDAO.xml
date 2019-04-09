@@ -2,35 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.haocai.web.dao.JiluHaocaiDAO">
   <resultMap id="BaseResultMap" type="com.haocai.web.mod.JiluHaocai">
-    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <id column="tid" jdbcType="VARCHAR" property="tid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="ttime" jdbcType="DATE" property="ttime" />
-    <result column="tnumber" jdbcType="INTEGER" property="tnumber" />
+    <result column="ttime" jdbcType="VARCHAR" property="ttime" />
+    <result column="tnumber" jdbcType="VARCHAR" property="tnumber" />
     <result column="tzhihang" jdbcType="VARCHAR" property="tzhihang" />
     <result column="tname" jdbcType="VARCHAR" property="tname" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
-    <result column="tip" jdbcType="INTEGER" property="tip" />
+    <result column="tip" jdbcType="VARCHAR" property="tip" />
   </resultMap>
   <sql id="Base_Column_List">
     tid, `name`, ttime, tnumber, tzhihang, tname, cname, tip
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getjiluhaocai" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+    from jilu_haocai
+    where 1=1	
+    <if test="name !=''">
+    and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="ttime !=''">
+    and ttime = #{ttime,jdbcType=VARCHAR}
+    </if>
+    <if test="tzhihang !=''">
+    and tzhihang = #{tzhihang,jdbcType=VARCHAR}
+    </if>
+    <if test="tname !=''">
+    and tname = #{tname,jdbcType=VARCHAR}
+    </if>
+    <if test="cname !=''">
+    and cname = #{cname,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from jilu_haocai
-    where tid = #{tid,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from jilu_haocai
-    where tid = #{tid,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.haocai.web.mod.JiluHaocai">
     insert into jilu_haocai (tid, `name`, ttime, 
       tnumber, tzhihang, tname, 
       cname, tip)
-    values (#{tid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{ttime,jdbcType=DATE}, 
-      #{tnumber,jdbcType=INTEGER}, #{tzhihang,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, 
-      #{cname,jdbcType=VARCHAR}, #{tip,jdbcType=INTEGER})
+    values (#{tid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{ttime,jdbcType=VARCHAR}, 
+      #{tnumber,jdbcType=VARCHAR}, #{tzhihang,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, 
+      #{cname,jdbcType=VARCHAR}, #{tip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.JiluHaocai">
     insert into jilu_haocai
@@ -62,16 +83,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tid != null">
-        #{tid,jdbcType=INTEGER},
+        #{tid,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="ttime != null">
-        #{ttime,jdbcType=DATE},
+        #{ttime,jdbcType=VARCHAR},
       </if>
       <if test="tnumber != null">
-        #{tnumber,jdbcType=INTEGER},
+        #{tnumber,jdbcType=VARCHAR},
       </if>
       <if test="tzhihang != null">
         #{tzhihang,jdbcType=VARCHAR},
@@ -83,7 +104,7 @@
         #{cname,jdbcType=VARCHAR},
       </if>
       <if test="tip != null">
-        #{tip,jdbcType=INTEGER},
+        #{tip,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -94,10 +115,10 @@
         `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="ttime != null">
-        ttime = #{ttime,jdbcType=DATE},
+        ttime = #{ttime,jdbcType=VARCHAR},
       </if>
       <if test="tnumber != null">
-        tnumber = #{tnumber,jdbcType=INTEGER},
+        tnumber = #{tnumber,jdbcType=VARCHAR},
       </if>
       <if test="tzhihang != null">
         tzhihang = #{tzhihang,jdbcType=VARCHAR},
@@ -109,20 +130,20 @@
         cname = #{cname,jdbcType=VARCHAR},
       </if>
       <if test="tip != null">
-        tip = #{tip,jdbcType=INTEGER},
+        tip = #{tip,jdbcType=VARCHAR},
       </if>
     </set>
-    where tid = #{tid,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.JiluHaocai">
     update jilu_haocai
     set `name` = #{name,jdbcType=VARCHAR},
-      ttime = #{ttime,jdbcType=DATE},
-      tnumber = #{tnumber,jdbcType=INTEGER},
+      ttime = #{ttime,jdbcType=VARCHAR},
+      tnumber = #{tnumber,jdbcType=VARCHAR},
       tzhihang = #{tzhihang,jdbcType=VARCHAR},
       tname = #{tname,jdbcType=VARCHAR},
       cname = #{cname,jdbcType=VARCHAR},
-      tip = #{tip,jdbcType=INTEGER}
-    where tid = #{tid,jdbcType=INTEGER}
+      tip = #{tip,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=VARCHAR}
   </update>
 </mapper>

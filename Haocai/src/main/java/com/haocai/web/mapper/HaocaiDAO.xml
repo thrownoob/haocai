@@ -3,9 +3,9 @@
 <mapper namespace="com.haocai.web.dao.HaocaiDAO">
   <resultMap id="BaseResultMap" type="com.haocai.web.mod.Haocai">
     <id column="name" jdbcType="VARCHAR" property="name" />
-    <result column="cid" jdbcType="INTEGER" property="cid" />
-    <result column="cnumber" jdbcType="INTEGER" property="cnumber" />
-    <result column="ctime" jdbcType="DATE" property="ctime" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="cnumber" jdbcType="VARCHAR" property="cnumber" />
+    <result column="ctime" jdbcType="VARCHAR" property="ctime" />
   </resultMap>
   <sql id="Base_Column_List">
     `name`, cid, cnumber, ctime
@@ -14,7 +14,7 @@
     select 
     <include refid="Base_Column_List" />
     from haocai
-    where `name` = #{name,jdbcType=VARCHAR}
+    where  name = #{name,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from haocai
@@ -23,8 +23,8 @@
   <insert id="insert" parameterType="com.haocai.web.mod.Haocai">
     insert into haocai (`name`, cid, cnumber, 
       ctime)
-    values (#{name,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, #{cnumber,jdbcType=INTEGER}, 
-      #{ctime,jdbcType=DATE})
+    values (#{name,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{cnumber,jdbcType=VARCHAR}, 
+      #{ctime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.Haocai">
     insert into haocai
@@ -47,13 +47,13 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="cid != null">
-        #{cid,jdbcType=INTEGER},
+        #{cid,jdbcType=VARCHAR},
       </if>
       <if test="cnumber != null">
-        #{cnumber,jdbcType=INTEGER},
+        #{cnumber,jdbcType=VARCHAR},
       </if>
       <if test="ctime != null">
-        #{ctime,jdbcType=DATE},
+        #{ctime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -61,22 +61,22 @@
     update haocai
     <set>
       <if test="cid != null">
-        cid = #{cid,jdbcType=INTEGER},
+        cid = #{cid,jdbcType=VARCHAR},
       </if>
       <if test="cnumber != null">
-        cnumber = #{cnumber,jdbcType=INTEGER},
+        cnumber = #{cnumber,jdbcType=VARCHAR},
       </if>
       <if test="ctime != null">
-        ctime = #{ctime,jdbcType=DATE},
+        ctime = #{ctime,jdbcType=VARCHAR},
       </if>
     </set>
     where `name` = #{name,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.haocai.web.mod.Haocai">
     update haocai
-    set cid = #{cid,jdbcType=INTEGER},
-      cnumber = #{cnumber,jdbcType=INTEGER},
-      ctime = #{ctime,jdbcType=DATE}
+    set cid = #{cid,jdbcType=VARCHAR},
+      cnumber = #{cnumber,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=VARCHAR}
     where `name` = #{name,jdbcType=VARCHAR}
   </update>
 </mapper>

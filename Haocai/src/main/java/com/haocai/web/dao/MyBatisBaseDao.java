@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.haocai.web.mod.Cat;
 import com.haocai.web.mod.Equipment;
 import com.haocai.web.mod.Jilu;
+import com.haocai.web.mod.JiluHaocai;
 import com.haocai.web.mod.Tna;
 import com.haocai.web.mod.User;
 
@@ -44,4 +45,7 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     List<Jilu> getjilu(String a);//根据EID查纪录
     
     User loginCheck(User user);
+    
+    List<JiluHaocai> getjiluhaocai(JiluHaocai jiluhaocai);//动态查询耗材记录
+    
 }
