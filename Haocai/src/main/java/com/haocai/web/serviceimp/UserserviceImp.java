@@ -26,7 +26,7 @@ public class UserserviceImp implements Userservice{
 		}else {
 			 map.put("status", "ok");
 	            map.put("user", user);
-	            request.getSession().setAttribute("user", user);
+	            request.getSession().setAttribute("user", username);
 		}
 		return map;
 	}

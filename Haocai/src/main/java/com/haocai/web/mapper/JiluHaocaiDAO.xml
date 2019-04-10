@@ -5,16 +5,17 @@
     <id column="tid" jdbcType="VARCHAR" property="tid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="ttime" jdbcType="VARCHAR" property="ttime" />
-    <result column="tnumber" jdbcType="VARCHAR" property="tnumber" />
+    <result column="cnumber" jdbcType="VARCHAR" property="cnumber" />
     <result column="tzhihang" jdbcType="VARCHAR" property="tzhihang" />
     <result column="tname" jdbcType="VARCHAR" property="tname" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
     <result column="tip" jdbcType="VARCHAR" property="tip" />
+    <result column="gcname" jdbcType="VARCHAR" property="gcname" />
   </resultMap>
   <sql id="Base_Column_List">
-    tid, `name`, ttime, tnumber, tzhihang, tname, cname, tip
+    tid, `name`, ttime, cnumber, tzhihang, tname, cname, tip, gcname
   </sql>
-  <select id="getjiluhaocai" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="getjiluhaocai" parameterType="java.lang.String" resultMap="BaseResultMap">
   select
   <include refid="Base_Column_List" />
     from jilu_haocai
@@ -34,8 +35,8 @@
     <if test="cname !=''">
     and cname = #{cname,jdbcType=VARCHAR}
     </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    </select>
+ <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from jilu_haocai
@@ -47,11 +48,11 @@
   </delete>
   <insert id="insert" parameterType="com.haocai.web.mod.JiluHaocai">
     insert into jilu_haocai (tid, `name`, ttime, 
-      tnumber, tzhihang, tname, 
-      cname, tip)
+      cnumber, tzhihang, tname, 
+      cname, tip, gcname)
     values (#{tid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{ttime,jdbcType=VARCHAR}, 
-      #{tnumber,jdbcType=VARCHAR}, #{tzhihang,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, 
-      #{cname,jdbcType=VARCHAR}, #{tip,jdbcType=VARCHAR})
+      #{cnumber,jdbcType=VARCHAR}, #{tzhihang,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, 
+      #{cname,jdbcType=VARCHAR}, #{tip,jdbcType=VARCHAR}, #{gcname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.JiluHaocai">
     insert into jilu_haocai
@@ -62,11 +63,11 @@
       <if test="name != null">
         `name`,
       </if>
-      <if test="ttime != null">
+      <if test="ttime == null">
         ttime,
       </if>
-      <if test="tnumber != null">
-        tnumber,
+      <if test="cnumber != null">
+        cnumber,
       </if>
       <if test="tzhihang != null">
         tzhihang,
@@ -80,6 +81,9 @@
       <if test="tip != null">
         tip,
       </if>
+      <if test="gcname != null">
+        gcname,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tid != null">
@@ -88,11 +92,11 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="ttime != null">
-        #{ttime,jdbcType=VARCHAR},
+      <if test="ttime == null">
+       now(),
       </if>
-      <if test="tnumber != null">
-        #{tnumber,jdbcType=VARCHAR},
+      <if test="cnumber != null">
+        #{cnumber,jdbcType=VARCHAR},
       </if>
       <if test="tzhihang != null">
         #{tzhihang,jdbcType=VARCHAR},
@@ -106,6 +110,9 @@
       <if test="tip != null">
         #{tip,jdbcType=VARCHAR},
       </if>
+      <if test="gcname != null">
+        #{gcname,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.haocai.web.mod.JiluHaocai">
@@ -117,8 +124,8 @@
       <if test="ttime != null">
         ttime = #{ttime,jdbcType=VARCHAR},
       </if>
-      <if test="tnumber != null">
-        tnumber = #{tnumber,jdbcType=VARCHAR},
+      <if test="cnumber != null">
+        cnumber = #{cnumber,jdbcType=VARCHAR},
       </if>
       <if test="tzhihang != null">
         tzhihang = #{tzhihang,jdbcType=VARCHAR},
@@ -132,6 +139,9 @@
       <if test="tip != null">
         tip = #{tip,jdbcType=VARCHAR},
       </if>
+      <if test="gcname != null">
+        gcname = #{gcname,jdbcType=VARCHAR},
+      </if>
     </set>
     where tid = #{tid,jdbcType=VARCHAR}
   </update>
@@ -139,11 +149,12 @@
     update jilu_haocai
     set `name` = #{name,jdbcType=VARCHAR},
       ttime = #{ttime,jdbcType=VARCHAR},
-      tnumber = #{tnumber,jdbcType=VARCHAR},
+      cnumber = #{cnumber,jdbcType=VARCHAR},
       tzhihang = #{tzhihang,jdbcType=VARCHAR},
       tname = #{tname,jdbcType=VARCHAR},
       cname = #{cname,jdbcType=VARCHAR},
-      tip = #{tip,jdbcType=VARCHAR}
+      tip = #{tip,jdbcType=VARCHAR},
+      gcname = #{gcname,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=VARCHAR}
   </update>
 </mapper>

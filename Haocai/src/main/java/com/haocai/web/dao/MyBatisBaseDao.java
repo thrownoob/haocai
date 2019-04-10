@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.haocai.web.mod.Cat;
 import com.haocai.web.mod.Equipment;
+import com.haocai.web.mod.Haocai;
 import com.haocai.web.mod.Jilu;
 import com.haocai.web.mod.JiluHaocai;
 import com.haocai.web.mod.Tna;
@@ -22,7 +23,7 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
 
     int insert(HashMap<String, Object> map);
 
-    int insertSelective(Model record);
+    int insertSelective(HashMap<String, Object> map);
 
     Model selectByPrimaryKey(PK id);
 
@@ -47,5 +48,11 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     User loginCheck(User user);
     
     List<JiluHaocai> getjiluhaocai(JiluHaocai jiluhaocai);//动态查询耗材记录
+    
+    int updatebynamefornumberup(HashMap<String, Object> map);//出入库数量变更
+    
+    int updatebynamefornumberdown(HashMap<String, Object> map);//出库数量变更
+    
+    Model selectbynamefornumber(String name);//查询单个余量
     
 }

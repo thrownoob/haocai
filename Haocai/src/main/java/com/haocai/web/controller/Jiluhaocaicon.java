@@ -3,6 +3,7 @@ package com.haocai.web.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +20,11 @@ public class Jiluhaocaicon {
 	  public  List<JiluHaocai>  equdny(JiluHaocai jiluhaocai) {
 		   
 			return this.jiluhaocaiservice.getjiluhaocai(jiluhaocai);
+		}
+	@RequestMapping(value="/addjilu",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	  public  int  addjilu(JiluHaocai jiluhaocai,HttpServletRequest request) {
+		   
+			return this.jiluhaocaiservice.addjilu(jiluhaocai, request);
 		}
 }

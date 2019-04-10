@@ -13,7 +13,7 @@ public class JiluHaocai implements Serializable {
 
     private String ttime;
 
-    private String tnumber;
+    private String cnumber;
 
     private String tzhihang;
 
@@ -22,6 +22,8 @@ public class JiluHaocai implements Serializable {
     private String cname;
 
     private String tip;
+
+    private String gcname;
 
     private static final long serialVersionUID = 1L;
 
@@ -49,12 +51,12 @@ public class JiluHaocai implements Serializable {
         this.ttime = ttime;
     }
 
-    public String getTnumber() {
-        return tnumber;
+    public String getCnumber() {
+        return cnumber;
     }
 
-    public void setTnumber(String tnumber) {
-        this.tnumber = tnumber;
+    public void setCnumber(String cnumber) {
+        this.cnumber = cnumber;
     }
 
     public String getTzhihang() {
@@ -89,6 +91,14 @@ public class JiluHaocai implements Serializable {
         this.tip = tip;
     }
 
+    public String getGcname() {
+        return gcname;
+    }
+
+    public void setGcname(String gcname) {
+        this.gcname = gcname;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -104,11 +114,12 @@ public class JiluHaocai implements Serializable {
         return (this.getTid() == null ? other.getTid() == null : this.getTid().equals(other.getTid()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getTtime() == null ? other.getTtime() == null : this.getTtime().equals(other.getTtime()))
-            && (this.getTnumber() == null ? other.getTnumber() == null : this.getTnumber().equals(other.getTnumber()))
+            && (this.getCnumber() == null ? other.getCnumber() == null : this.getCnumber().equals(other.getCnumber()))
             && (this.getTzhihang() == null ? other.getTzhihang() == null : this.getTzhihang().equals(other.getTzhihang()))
             && (this.getTname() == null ? other.getTname() == null : this.getTname().equals(other.getTname()))
             && (this.getCname() == null ? other.getCname() == null : this.getCname().equals(other.getCname()))
-            && (this.getTip() == null ? other.getTip() == null : this.getTip().equals(other.getTip()));
+            && (this.getTip() == null ? other.getTip() == null : this.getTip().equals(other.getTip()))
+            && (this.getGcname() == null ? other.getGcname() == null : this.getGcname().equals(other.getGcname()));
     }
 
     @Override
@@ -118,11 +129,12 @@ public class JiluHaocai implements Serializable {
         result = prime * result + ((getTid() == null) ? 0 : getTid().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getTtime() == null) ? 0 : getTtime().hashCode());
-        result = prime * result + ((getTnumber() == null) ? 0 : getTnumber().hashCode());
+        result = prime * result + ((getCnumber() == null) ? 0 : getCnumber().hashCode());
         result = prime * result + ((getTzhihang() == null) ? 0 : getTzhihang().hashCode());
         result = prime * result + ((getTname() == null) ? 0 : getTname().hashCode());
         result = prime * result + ((getCname() == null) ? 0 : getCname().hashCode());
         result = prime * result + ((getTip() == null) ? 0 : getTip().hashCode());
+        result = prime * result + ((getGcname() == null) ? 0 : getGcname().hashCode());
         return result;
     }
 
@@ -135,11 +147,12 @@ public class JiluHaocai implements Serializable {
         sb.append(", tid=").append(tid);
         sb.append(", name=").append(name);
         sb.append(", ttime=").append(ttime);
-        sb.append(", tnumber=").append(tnumber);
+        sb.append(", cnumber=").append(cnumber);
         sb.append(", tzhihang=").append(tzhihang);
         sb.append(", tname=").append(tname);
         sb.append(", cname=").append(cname);
         sb.append(", tip=").append(tip);
+        sb.append(", gcname=").append(gcname);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
