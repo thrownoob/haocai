@@ -10,4 +10,6 @@ public interface Jiluhaocaiservice {
 	 public List<JiluHaocai> getjiluhaocai(JiluHaocai jiluhaocai);
 	 
 	 public  int addjilu(JiluHaocai jiluHaocai ,HttpServletRequest request);
+	 
+	 public int upgcname(String name);
 }

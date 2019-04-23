@@ -1,6 +1,7 @@
 package com.haocai.web.serviceimp;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -22,7 +23,7 @@ public class Haocaiimp implements Haocaiservice{
 		 HashMap<String, Object> map=new HashMap<String, Object>();
 
      	  map.put("name", haocai.getName());
-     	  map.put("cnumber", haocai.getCnumber());
+     	  map.put("cnumber", "0");
      	map.put("cid", Uuid.getUUID());
 
 		return this.haocaidao.insertSelective(map);
@@ -42,6 +43,18 @@ public class Haocaiimp implements Haocaiservice{
    	  map.put("name", haocai.getName());
    	  map.put("cnumber", haocai.getCnumber());
 		return this.haocaidao.updatebynamefornumberdown(map);
+	}
+	public List<Haocai> getname() {
+		// TODO Auto-generated method stub
+		return this.haocaidao.getname();
+	}
+	public List<Haocai> getallhaocai(String name) {
+		// TODO Auto-generated method stub
+		return this.haocaidao.getallhaocai(name);
+	}
+	public String getnumber(String name) {
+		// TODO Auto-generated method stub
+		return this.haocaidao.selectbynamefornumber(name);
 	}
 
 }

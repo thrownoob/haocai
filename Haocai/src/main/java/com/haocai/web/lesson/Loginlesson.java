@@ -16,7 +16,7 @@ public class Loginlesson implements HandlerInterceptor {
 			 System.out.println("尚未登录，调到登录页面");
 //			              response.sendRedirect("/Haocai/Login.jsp");
 			        
-			  response.getWriter().print("1");
+			  response.getWriter().print("368");
 			           return false;
 		}
 		return true;

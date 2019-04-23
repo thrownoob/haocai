@@ -24,8 +24,28 @@ public class JiluHaocai implements Serializable {
     private String tip;
 
     private String gcname;
+    
+    private String timebegin;
+    
+    private String timeend;
 
-    private static final long serialVersionUID = 1L;
+    public String getTimebegin() {
+		return timebegin;
+	}
+
+	public void setTimebegin(String timebegin) {
+		this.timebegin = timebegin;
+	}
+
+	public String getTimeend() {
+		return timeend;
+	}
+
+	public void setTimeend(String timeend) {
+		this.timeend = timeend;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public String getTid() {
         return tid;

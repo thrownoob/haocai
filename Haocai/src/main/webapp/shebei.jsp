@@ -36,8 +36,8 @@
  <div class="change-type">
         <div class="type-left" :class="showType == true ? 'showListType':''">
             <ul>
-                <li><a href="http://localhost:8080/01/allowance.jsp">余量查询</a><span></span></li>
-                <li ><a href="http://localhost:8080/01/haocai.jsp">耗材出入库查询</a><span></span></li>
+                <li><a href="http://localhost:8080/Haocai/allowance.jsp">余量查询</a><span></span></li>
+                <li ><a href="http://localhost:8080/Haocai/haocai.jsp">耗材出入库查询</a><span></span></li>
                 <li class="active"><a>设备查询</a><span></span></li>
                 <li><a></a><span></span></li>
                 <li><a></a><span></span></li>

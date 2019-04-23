@@ -20,11 +20,15 @@
      lay('#version').html('-v'+ laydate.v);
 
    //执行一个laydate实例
+
    laydate.render({
-     elem: '#ttime',
-     range: true
-   });
-     
+	   elem: '#timebegin'
+		   ,type: 'datetime'
+	 });
+   laydate.render({
+	   elem: '#timeend'
+		   ,type: 'datetime'
+	 });
      </script>
      <script>
     $(function(){
@@ -72,8 +76,10 @@
                         <input id="name" name="name"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请输入型号">
                           <span>支行：</span>
                         <input id="tzhihang" name="tzhihang" onkeyup="this.value=this.value.replace(/\s+/g,'')" type="text" class="form-control" placeholder="请输入支行">
-                         <span>日期：</span>
-                        <input id="ttime" name="ttime"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请选择时间">
+                         <span>开始：</span>
+                        <input id="timebegin" name="timebegin"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请选择时间">
+                        <span>结束：</span>
+                        <input id="timeend" name="timeend"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请选择时间">
                         <span>申请人：</span>
                         <input id="cname" name="cname"  type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="form-control" placeholder="请输入姓名">
                          <span>办理人：</span>
@@ -96,56 +102,18 @@
         </div>
         </form>
         <!--添加按钮及bootstrap的模态框-->
-        <form action="" id="addform">
-        <div class="export">
-            <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
-                <img src="img/add_two.png"/>
-                <span>新增</span>
-            </button>
-            <div class="modal fade" id="renyuan">
-                <div class="modal-dialog modal-lg modal_position">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">新增</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <table id="xztb" class="table">
-                                <!--新修改弹窗的样式-->
-                                <tbody>
-                                <tr>
-                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>名称/型号</label>
-                                    </td>
-                                    <td><input class="Name" id="name" name="name" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
-                                   <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>数量</label>
-                                    </td>
-                                    <td><input class="Number" type="text" id="cnumber" name="cnumber" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
-                                  
-                                </tr>
-                               
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </form>
+
                 <form action="" id="downup">
         <div class="export">
             <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ruku">
                 <img src="img/add_two.png"/>
-                <span>入库</span>
+                <span>出入库</span>
             </button>
             <div class="modal fade" id="ruku">
                 <div class="modal-dialog modal-lg modal_position">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">入库</h4>
+                            <h4 class="modal-title">出入库</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -155,17 +123,17 @@
                                 <tr>
                                     <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>名称/型号</label>
                                     </td>
-                                    <td><input class="Name" id="name" name="name" type="text" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
+                                    <td><input class="Name2" id="name" name="name" type="text"   maxLength="10"  onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入名称"/></td>
                                     <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>支行</label>
                                     </td>
-                                    <td><input class="Zhi" type="text" id="tzhihang" name="tzhihang" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入支行"/></td>
+                                    <td><input class="Zhi2" type="text" id="tzhihang" name="tzhihang" maxLength="10"  onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入支行"/></td>
                                 </tr>
-                                <tr>
+                                <tr>	
                                     <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>数量</label>
                                     </td>
-                                    <td><input class="Number" type="text" id="cnumber" name="cnumber" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量"/></td>
+                                    <td><input class="Number2" type="text" id="cnumber" name="cnumber" oninput = "value=value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入数量" /></td>
                                    <td class="tb_bg"><label for="">领取人</label></td>
-                                    <td><input class="Tname" type="text" name="tname" id="tname" onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
+                                    <td><input class="Tname2" type="text" name="tname" id="tname" maxLength="10"  onkeyup="this.value=this.value.replace(/\s+/g,'')" placeholder="请输入操作员姓名" > </td>
                                    
                                 </tr>
                                 <tr>

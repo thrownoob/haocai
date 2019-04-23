@@ -10,7 +10,11 @@
   <sql id="Base_Column_List">
     `name`, cid, cnumber, ctime
   </sql>
-  <select id="selectbynamefornumber" parameterType="java.lang.String">
+  <select id="getname" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select name
+  from haocai
+  </select>
+  <select id="selectbynamefornumber" parameterType="java.lang.String" resultType="String">
   select 
   cnumber
   from haocai 
@@ -21,6 +25,17 @@
     <include refid="Base_Column_List" />
     from haocai
     where `name` = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="getallhaocai" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from haocai
+    <where>
+     <if test="_parameter !=''">
+       `name` = #{_parameter}
+    </if>
+    </where>
+
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from haocai

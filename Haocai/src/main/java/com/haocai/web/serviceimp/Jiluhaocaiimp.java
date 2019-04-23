@@ -39,5 +39,9 @@ private JiluHaocaiDAO jiluhaocaidao;
 		// TODO Auto-generated method stub
 		return this.jiluhaocaidao.insertSelective(map);
 	}
+	public int upgcname(String name) {
+		// TODO Auto-generated method stub
+		return this.jiluhaocaidao.upgcname(name);
+	}
 
 }

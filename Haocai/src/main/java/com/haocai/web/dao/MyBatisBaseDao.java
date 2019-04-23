@@ -53,6 +53,13 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     
     int updatebynamefornumberdown(HashMap<String, Object> map);//出库数量变更
     
-    Model selectbynamefornumber(String name);//查询单个余量
+    String selectbynamefornumber(String name);//查询单个余量
+    
+    List<Haocai> getname();
+    
+    List<Haocai> getallhaocai(String name);
+    
+    int  upgcname(String name);
+    
     
 }

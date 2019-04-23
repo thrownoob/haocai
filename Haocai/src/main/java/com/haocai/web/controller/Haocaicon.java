@@ -1,6 +1,8 @@
 	package com.haocai.web.controller;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,11 @@ public class Haocaicon {
 		   }else {
 			return 0;
 		}
-			
+	}
+		   @RequestMapping(value="/getallhaocaibyname",produces = "application/json; charset=utf-8")
+			@ResponseBody
+			  public  List<Haocai>  getallhaocai(String name) {
+				 return this.haocaiservice.getallhaocai(name);
 		}
 	@RequestMapping(value="/addhaocai",produces = "application/json; charset=utf-8")
 	@ResponseBody
@@ -51,5 +57,20 @@ public class Haocaicon {
 		return this.haocaiservice.uphaocainumberdown(haocai);
 		
 	}
+	@RequestMapping(value="/getname",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public  List<Haocai>  getname() {
+		
+		
+		return this.haocaiservice.getname();
+		
+	}
+	@RequestMapping(value="/getnumberforname",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	  public  String  getnumber(String name) {
+		   
+			return this.haocaiservice.getnumber(name);
+		}
+	
 	}
 

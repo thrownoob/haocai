@@ -15,16 +15,17 @@
   <sql id="Base_Column_List">
     tid, `name`, ttime, cnumber, tzhihang, tname, cname, tip, gcname
   </sql>
-    <select id="getjiluhaocai" parameterType="java.lang.String" resultMap="BaseResultMap">
-  select
-  <include refid="Base_Column_List" />
-    from jilu_haocai
-    where 1=1	
-    <if test="name !=''">
+  <select id="getcount" parameterType="java.lang.String"  resultType="java.lang.String">
+  select count(tid)  AS count  from jilu_haocai 
+  where 1=1
+   <if test="name !=''">
     and name = #{name,jdbcType=VARCHAR}
     </if>
-    <if test="ttime !=''">
-    and ttime = #{ttime,jdbcType=VARCHAR}
+    <if test="timebegin !=''">
+    and ttime  <![CDATA[>=]]> #{timebegin,jdbcType=VARCHAR}
+    </if>
+    <if test="timeend !=''">
+    and ttime <![CDATA[<=]]> #{timeend,jdbcType=VARCHAR}
     </if>
     <if test="tzhihang !=''">
     and tzhihang = #{tzhihang,jdbcType=VARCHAR}
@@ -35,6 +36,31 @@
     <if test="cname !=''">
     and cname = #{cname,jdbcType=VARCHAR}
     </if>
+  </select>
+    <select id="getjiluhaocai" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+    from jilu_haocai
+    where 1=1	
+    <if test="name !=null">
+    and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="timebegin !=null">
+    and ttime  <![CDATA[>=]]> #{timebegin,jdbcType=VARCHAR}
+    </if>
+    <if test="timeend !=null">
+    and ttime <![CDATA[<=]]> #{timeend,jdbcType=VARCHAR}
+    </if>
+    <if test="tzhihang !=null">
+    and tzhihang = #{tzhihang,jdbcType=VARCHAR}
+    </if>
+    <if test="tname !=null">
+    and tname = #{tname,jdbcType=VARCHAR}
+    </if>
+    <if test="cname !=null">
+    and cname = #{cname,jdbcType=VARCHAR}
+    </if>
+    ORDER BY ttime
     </select>
  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -46,6 +72,7 @@
     delete from jilu_haocai
     where tid = #{tid,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.haocai.web.mod.JiluHaocai">
     insert into jilu_haocai (tid, `name`, ttime, 
       cnumber, tzhihang, tname, 
@@ -156,5 +183,8 @@
       tip = #{tip,jdbcType=VARCHAR},
       gcname = #{gcname,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=VARCHAR}
+  </update>
+  <update id="upgcname" >
+    UPDATE  jilu_haocai SET gcname = (SELECT cnumber FROM haocai WHERE name = #{name,jdbcType=VARCHAR})  where ttime=now()
   </update>
 </mapper>
