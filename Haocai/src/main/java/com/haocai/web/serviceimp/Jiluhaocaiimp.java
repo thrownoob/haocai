@@ -43,5 +43,9 @@ private JiluHaocaiDAO jiluhaocaidao;
 		// TODO Auto-generated method stub
 		return this.jiluhaocaidao.upgcname(name);
 	}
+	public int getcount(JiluHaocai jiluHaocai) {
+		// TODO Auto-generated method stub
+		return this.jiluhaocaidao.getcount(jiluHaocai);
+	}
 
 }

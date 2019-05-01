@@ -12,4 +12,5 @@ public interface Jiluhaocaiservice {
 	 public  int addjilu(JiluHaocai jiluHaocai ,HttpServletRequest request);
 	 
 	 public int upgcname(String name);
+	 public int getcount(JiluHaocai jiluhaocai);
 }

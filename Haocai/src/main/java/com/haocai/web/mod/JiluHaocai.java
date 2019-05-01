@@ -28,8 +28,28 @@ public class JiluHaocai implements Serializable {
     private String timebegin;
     
     private String timeend;
+    
+    private int page;
+    
+    private int limit;
 
-    public String getTimebegin() {
+    public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+	public String getTimebegin() {
 		return timebegin;
 	}
 
@@ -173,6 +193,8 @@ public class JiluHaocai implements Serializable {
         sb.append(", cname=").append(cname);
         sb.append(", tip=").append(tip);
         sb.append(", gcname=").append(gcname);
+        sb.append(", page=").append(page);
+        sb.append(", limit=").append(limit);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

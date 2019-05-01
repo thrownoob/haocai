@@ -28,14 +28,17 @@ public class Jiluhaocaicon {
 		
 		List list = new ArrayList();
 		   
-      String page =request.getParameter("page");
-      String limit=request.getParameter("limit");
-      
-   System.out.println(page);
-		    String msg="";
+		int page1 =Integer.parseInt(request.getParameter("page"));
+		int limit1=Integer.parseInt(request.getParameter("limit"));
+		int page=limit1*(page1-1);
+		int limit=limit1;
+      jiluhaocai.setPage(page);
+      jiluhaocai.setLimit(limit);
+      System.out.println(jiluhaocai);
+            String msg="";
 		    int code=0;
 		    List data =this.jiluhaocaiservice.getjiluhaocai(jiluhaocai);
-		    int count=data.size();
+		    int count=this.jiluhaocaiservice.getcount(jiluhaocai);
 		    System.out.println(count);
 		    Map<String, Object> map = new HashMap<String, Object>();
 		    map.put("code", code);

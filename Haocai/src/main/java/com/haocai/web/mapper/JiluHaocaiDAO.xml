@@ -15,25 +15,25 @@
   <sql id="Base_Column_List">
     tid, `name`, ttime, cnumber, tzhihang, tname, cname, tip, gcname
   </sql>
-  <select id="getcount" parameterType="java.lang.String"  resultType="java.lang.String">
+  <select id="getcount" parameterType="java.lang.String"  resultType="java.lang.Integer">
   select count(tid)  AS count  from jilu_haocai 
   where 1=1
-   <if test="name !=''">
+   <if test="name !=''and name !=null">
     and name = #{name,jdbcType=VARCHAR}
     </if>
-    <if test="timebegin !=''">
+    <if test="timebegin !=''and timebegin !=null">
     and ttime  <![CDATA[>=]]> #{timebegin,jdbcType=VARCHAR}
     </if>
-    <if test="timeend !=''">
+    <if test="timeend !=''and timeend !=null">
     and ttime <![CDATA[<=]]> #{timeend,jdbcType=VARCHAR}
     </if>
-    <if test="tzhihang !=''">
+    <if test="tzhihang !=''and tzhihang !=null">
     and tzhihang = #{tzhihang,jdbcType=VARCHAR}
     </if>
-    <if test="tname !=''">
+    <if test="tname !=''and tname !=null">
     and tname = #{tname,jdbcType=VARCHAR}
     </if>
-    <if test="cname !=''">
+    <if test="cname !=''and cname !=null">
     and cname = #{cname,jdbcType=VARCHAR}
     </if>
   </select>
@@ -42,25 +42,27 @@
   <include refid="Base_Column_List" />
     from jilu_haocai
     where 1=1	
-    <if test="name !=null">
+    <if test="name !=''and name !=null">
     and name = #{name,jdbcType=VARCHAR}
     </if>
-    <if test="timebegin !=null">
+    <if test="timebegin !=''and timebegin !=null">
     and ttime  <![CDATA[>=]]> #{timebegin,jdbcType=VARCHAR}
     </if>
-    <if test="timeend !=null">
+    <if test="timeend !=''and timeend !=null">
     and ttime <![CDATA[<=]]> #{timeend,jdbcType=VARCHAR}
     </if>
-    <if test="tzhihang !=null">
+    <if test="tzhihang !=''and tzhihang !=null">
     and tzhihang = #{tzhihang,jdbcType=VARCHAR}
     </if>
-    <if test="tname !=null">
+    <if test="tname !=''and tname !=null">
     and tname = #{tname,jdbcType=VARCHAR}
     </if>
-    <if test="cname !=null">
+    <if test="cname !=''and cname !=null">
     and cname = #{cname,jdbcType=VARCHAR}
     </if>
-    ORDER BY ttime
+      ORDER BY ttime
+    limit #{page},#{limit}
+  
     </select>
  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 

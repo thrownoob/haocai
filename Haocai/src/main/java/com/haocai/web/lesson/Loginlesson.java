@@ -14,9 +14,10 @@ public class Loginlesson implements HandlerInterceptor {
 		Object user=request.getSession().getAttribute("user");
 		if(user=="userNameOrPwdError"||user==null) {
 			 System.out.println("尚未登录，调到登录页面");
-//			              response.sendRedirect("/Haocai/Login.jsp");
+	       //       response.sendRedirect("/login.jsp");
+	            
 			        
-			  response.getWriter().print("368");
+			          response.getWriter().print("368");
 			           return false;
 		}
 		return true;
@@ -24,13 +25,13 @@ public class Loginlesson implements HandlerInterceptor {
 
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
+		  System.out.println("postHandle");
 		
 	}
 
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
+		System.out.println("afterCompletion");
 		
 	}
 

@@ -4,6 +4,7 @@
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,9 +68,19 @@ public class Haocaicon {
 	}
 	@RequestMapping(value="/getnumberforname",produces = "application/json; charset=utf-8")
 	@ResponseBody
-	  public  String  getnumber(String name) {
+	  public  String  getnumber(String name,HttpServletRequest request) {
 		   
-			return this.haocaiservice.getnumber(name);
+			String number= this.haocaiservice.getnumber(name);
+			String cnumber=request.getParameter("cnumber");
+			if(number !=null) {
+				if(Integer.parseInt(number)>Integer.parseInt(cnumber)) {
+					return "1";
+				}
+				return "2";
+			}else {
+				return "3";
+			}
+			
 		}
 	
 	}

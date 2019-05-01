@@ -49,6 +49,8 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     
     List<JiluHaocai> getjiluhaocai(JiluHaocai jiluhaocai);//动态查询耗材记录
     
+    int getcount(JiluHaocai jiluHaocai);
+    
     int updatebynamefornumberup(HashMap<String, Object> map);//出入库数量变更
     
     int updatebynamefornumberdown(HashMap<String, Object> map);//出库数量变更
