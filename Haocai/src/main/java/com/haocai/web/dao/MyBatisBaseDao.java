@@ -63,5 +63,8 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     
     int  upgcname(String name);
     
+    List<Haocai> gethaocainumber(Haocai haocai);
+    
+    int getcountnumber(Haocai haocai);
     
 }

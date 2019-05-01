@@ -56,5 +56,13 @@ public class Haocaiimp implements Haocaiservice{
 		// TODO Auto-generated method stub
 		return this.haocaidao.selectbynamefornumber(name);
 	}
+	public List<Haocai> gethaocainumber(Haocai haocai) {
+		// TODO Auto-generated method stub
+		return this.haocaidao.gethaocainumber(haocai);
+	}
+	public int getcountnumber(Haocai haocai) {
+		// TODO Auto-generated method stub
+		return this.haocaidao.getcountnumber(haocai);
+	}
 
 }

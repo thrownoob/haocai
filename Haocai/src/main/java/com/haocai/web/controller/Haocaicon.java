@@ -1,7 +1,9 @@
 	package com.haocai.web.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -81,6 +83,36 @@ public class Haocaicon {
 				return "3";
 			}
 			
+		}
+	
+	   @RequestMapping(value="/getnumberpage",produces = "application/json; charset=utf-8")
+			@ResponseBody
+			  public  Map<String, Object>  getnumberpage(Haocai haocai,HttpServletRequest request) {
+		   
+		   int page1 =Integer.parseInt(request.getParameter("page"));
+			int limit1=Integer.parseInt(request.getParameter("limit"));
+			int page=limit1*(page1-1);
+			int limit=limit1;
+	      haocai.setPage(page);
+	      haocai.setLimit(limit);
+	      System.out.println(haocai);
+	            String msg="";
+			    int code=0;
+			    List data =this.haocaiservice.gethaocainumber(haocai);
+			    int count=this.haocaiservice.getcountnumber(haocai);
+			    System.out.println(count);
+			    Map<String, Object> map = new HashMap<String, Object>();
+			    map.put("code", code);
+			    map.put("msg", msg);
+			    map.put("count", count);
+			    map.put("data", data);
+			    
+			    
+		   
+			
+			  
+				return map;
+				 
 		}
 	
 	}
