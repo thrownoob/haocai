@@ -75,7 +75,7 @@ public class Haocaicon {
 			String number= this.haocaiservice.getnumber(name);
 			String cnumber=request.getParameter("cnumber");
 			if(number !=null) {
-				if(Integer.parseInt(number)>Integer.parseInt(cnumber)) {
+				if(Integer.parseInt(number)>=Integer.parseInt(cnumber)) {
 					return "1";
 				}
 				return "2";

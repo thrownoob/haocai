@@ -3,7 +3,7 @@
     <% 
    if (session.getAttribute("user") == null) { 
 
-response.sendRedirect("http://localhost:8080/Haocai/login.jsp"); 
+response.sendRedirect("http://192.168.1.92:8080/Haocai/login.jsp"); 
 
 return; 
 } 
@@ -116,7 +116,7 @@ return;
                         </a>
                     </li>
                     <li class="layui-nav-item" mobile>
-                        <a href="login.html" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
+                        <a href="login.jsp" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
                     </li>
                     <li class="layui-nav-item lockcms" pc>
                         <a href="javascript:;"><i class="iconfont icon-lock1"></i><cite>锁屏</cite></a>
