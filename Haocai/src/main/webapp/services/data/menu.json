@@ -1,0 +1,153 @@
+{
+	"code": 200,
+	"token": "taVJM3Ba3lD/YmU19m1VLj9BrBMs8CdS",
+	"msg": null,
+	"data": [
+		{
+			"title": "主页",
+			"icon": "&#xe68e;",
+			"href": "/pages/main/main.html",
+			"children": []
+		},
+		{
+			"title": "耗材管理",
+			"icon": "&#xe7ae;",
+			"href": "",
+			"children": [
+				{
+					"title": "余量查询",
+					"icon": "",
+					"href": "pages/webAdmin/seall.jsp",
+					"children": []
+				},
+				{
+					"title": "出入库",
+					"icon": "&#xe638;",
+					"href": "pages/webAdmin/content.jsp",
+					"children": []
+				},
+				{
+					"title": "记录查询",
+					"icon": "layui-icon-survey",
+					"href": "pages/webAdmin/column.jsp",
+					"children": []
+				}
+			]
+		},
+		{
+			"title": "设备管理",
+			"icon": "&#xe672;",
+			"href": "",
+			"children": [
+				{
+					"title": "设备状态",
+					"icon": "&#xe612;",
+					"href": "pages/shebei/state.jsp",
+					"children": []
+				},
+				{
+					"title": "设备借出/归还",
+					"icon": "&#xe60a;",
+					"href": "pages/userRights/power.html",
+					"children": []
+				},
+				{
+					"title": "设备入库",
+					"icon": "&#xe613;",
+					"href": "pages/shebei/ruku.jsp",
+					"children": []
+				},
+				{
+					"title": "设备报废",
+					"icon": "&#xe62a;",
+					"href": "pages/userRights/menu.html",
+					"children": []
+				}
+			]
+		},
+		{
+			"title": "系统设置",
+			"icon": "&#xe614;",
+			"href": "",
+			"children": [
+				{
+					"title": "基本信息",
+					"icon": "&#xe647;",
+					"href": "pages/sysSetup/basicData.html",
+					"children": []
+				},
+				{
+					"title": "数据清理",
+					"icon": "&#xe640;",
+					"href": "pages/sysSetup/dataClear.html",
+					"children": []
+				},
+				{
+					"title": "SEO优化",
+					"icon": "&#xe630;",
+					"href": "pages/sysSetup/seoOptimize.html",
+					"children": []
+				},
+				{
+					"title": "友情链接",
+					"icon": "&#xe62e;",
+					"href": "pages/sysSetup/friendshipLink.html",
+					"children": []
+				},
+				{
+					"title": "模板管理",
+					"icon": "&#xe663;",
+					"href": "pages/sysSetup/templateAdmin.html",
+					"children": []
+				}
+			]
+		},
+		{
+			"title": "报表",
+			"icon": "&#xe637;",
+			"href": "",
+			"children": [
+				{
+					"title": "用户统计",
+					"icon": "&#xe629;",
+					"href": "pages/reportForm/statistics.html",
+					"children": []
+				},
+				{
+					"title": "日志报表",
+					"icon": "&#xe62a;",
+					"href": "pages/reportForm/log.html",
+					"children": []
+				}
+			]
+		},
+		{
+			"title": "其他",
+			"icon": null,
+			"href": "",
+			"children": [
+				{
+					"title": "404-新页面跳转",
+					"icon": null,
+					"href": "pages/404.html",
+					"target": "_blank",
+					"children": []
+				},
+				{
+					"title": "登录-当前页跳转",
+					"icon": null,
+					"href": "login.html",
+					"target": "_self",
+					"children": []
+				},
+				{
+					"title": "登录2-当前页跳转",
+					"icon": null,
+					"href": "pages/login/login2.html",
+					"target": "_top",
+					"children": []
+				}
+			]
+		}
+	]
+}
