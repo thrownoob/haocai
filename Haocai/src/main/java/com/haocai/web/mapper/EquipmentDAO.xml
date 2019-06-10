@@ -17,15 +17,35 @@
     select 
     <include refid="Base_Column_List" />
     from equipment
-    where eid = #{eid,jdbcType=VARCHAR}
+    where 1=1
+  <if test="eid !=''and eid !=null">
+ and eid= #{eid,jdbcType=VARCHAR}
+ </if>
+   <if test="categary !=''and categary !=null">
+ and  categary=#{categary,jdbcType=VARCHAR}
+ </if>
+     limit #{page},#{limit}
+  </select>
+    <select id="getequcount" parameterType="java.lang.String"  resultType="java.lang.Integer">
+    select 
+     count(eid)  AS count 
+    from equipment
+    where 1=1
+ <if test="eid !=''and eid !=null">
+ and eid= #{eid,jdbcType=VARCHAR}
+ </if>
+  <if test="categary !=''and categary !=null">
+ and  categary=#{categary,jdbcType=VARCHAR}
+ </if>
   </select>
   
  <select id="getequ" parameterType="java.lang.String" resultMap="BaseResultMap">
  select
  eid
  from equipment
-    <if test="eid != null">
-        eid = #{eid,jdbcType=VARCHAR}
+ where 1=1
+    <if test="_parameter!= null">
+       and eid =#{_parameter}
       </if>
  </select>
  <select id="getdny" parameterType= "java.lang.String" resultMap="BaseResultMap">
@@ -55,10 +75,10 @@
   </delete>
   <insert id="insert" parameterType="com.haocai.web.mod.Equipment">
     insert into equipment (eid, categary, gettime, 
-      ard, usetime, yr, fixed
+      ard,  yr, fixed
       )
     values (#{eid,jdbcType=VARCHAR}, #{categary,jdbcType=VARCHAR},now(), 
-      #{ard,jdbcType=VARCHAR}, #{usetime,jdbcType=VARCHAR}, #{yr,jdbcType=VARCHAR}, #{fixed,jdbcType=VARCHAR}
+      #{ard,jdbcType=VARCHAR}, “未启用”, “否”
       )
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.Equipment">
@@ -70,7 +90,7 @@
       <if test="categary != null">
         categary,
       </if>
-      <if test="gettime != null">
+      <if test="gettime == null">
         gettime,
       </if>
       <if test="ard != null">
@@ -93,8 +113,8 @@
       <if test="categary != null">
         #{categary,jdbcType=VARCHAR},
       </if>
-      <if test="gettime != null">
-        #{gettime,jdbcType=DATE},
+      <if test="gettime == null">
+       now(),
       </if>
       <if test="ard != null">
         #{ard,jdbcType=VARCHAR},
@@ -103,7 +123,7 @@
         #{usetime,jdbcType=VARCHAR},
       </if>
       <if test="yr != null">
-        #{yr,jdbcType=VARCHAR},
+         #{yr,jdbcType=VARCHAR},
       </if>
       <if test="fixed != null">
         #{fixed,jdbcType=VARCHAR},

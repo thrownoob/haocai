@@ -153,7 +153,7 @@ return;
                                 </a>
                             </dd>
                             <dd>
-                                <a href="login.html" class="signOut">
+                                <a href="login.jsp" class="signOut">
                                     <i class="iconfont icon-loginout"></i>
                                     <cite>安全退出</cite>
                                 </a>

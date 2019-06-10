@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/mvc 
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd "
 	  >
-	     <bean id="mappingJacksonHttpMessageConverter"	class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+	  <bean id="mappingJacksonHttpMessageConverter"	class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
 		  <property name="supportedMediaTypes">
 			<list>
 				    <value>text/html;charset=UTF-8</value>
@@ -26,6 +26,8 @@
 	         <mvc:exclude-mapping path="/**/loginjs/**"/>
 	         <mvc:exclude-mapping path="/**/img/**"/>
 	         <mvc:exclude-mapping path="/**/login/**"/>
+	         <mvc:exclude-mapping path="/**/equ/**"/>
+	         <mvc:exclude-mapping path="/**/jilu/**"/>
            <bean class="com.haocai.web.lesson.Loginlesson"></bean>
 	    </mvc:interceptor>
 	</mvc:interceptors>

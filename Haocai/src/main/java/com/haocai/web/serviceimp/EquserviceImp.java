@@ -23,12 +23,12 @@ private EquipmentDAO euqdao;
 //          if(catservice.sec(equ.getCategary())==1) {
 //        	  return 2;
 //          }else {
+		  map.put("categary", equ.getCategary());
         	  map.put("eid", equ.getEid());
-        	  map.put("categary", equ.getCategary());
-        	  map.put("ard", equ.getArd());
-        	  map.put("yr", equ.getYr());
-        	  map.put("fixed", equ.getFixed());
-        	  return this.euqdao.insert(map);
+        	map.put("ard", equ.getArd());
+        	  map.put("yr", "未启用");
+        	  map.put("fixed", "否");
+        	  return this.euqdao.insertSelective(map);
 //        	  
 //          }
 
@@ -64,14 +64,19 @@ private EquipmentDAO euqdao;
 		
 	}
 
-	public List<Equipment> getkey() {
+	public List<Equipment> getkey(String eid) {
 		// TODO Auto-generated method stub
-		return this.euqdao.getequ();
+		return this.euqdao.getequ(eid);
 	}
 
-	public List<Equipment> getdyn(Equipment equ) {
+	public List<Equipment> selectByPrimaryKey(Equipment equ) {
 		// TODO Auto-generated method stub
-		return this.euqdao.getdny(equ);
+		return this.euqdao.selectByPrimaryKey(equ);
+	}
+
+	public int getequcount(Equipment equ) {
+		// TODO Auto-generated method stub
+		return this.euqdao.getequcount(equ);
 	}
 
 }

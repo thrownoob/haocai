@@ -26,9 +26,14 @@ public class JiluserviceImp implements Jiluservice{
 		return this.jiluDAO.insert(map);
 		
 	}
-	public List<Jilu> sejilu(String a) {
-
-		return  this.jiluDAO.getjilu(a);
+	public List<Jilu> sejilu(Jilu jilu) {
+       
+		return  this.jiluDAO.getjilu(jilu);
+	}
+	public int getcount(Jilu jilu) {
+		// TODO Auto-generated method stub
+		
+		return this.jiluDAO.getcountjilu(jilu);
 	}
 
 }

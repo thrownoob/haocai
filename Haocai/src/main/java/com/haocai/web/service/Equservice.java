@@ -10,6 +10,7 @@ public interface Equservice {
 	public int inse(Equipment equ); 
 	public int equsec(String a);
 	public int equupd(Equipment equ);
-	 public List<Equipment> getkey();
-	 public List<Equipment> getdyn(Equipment equ);
+	 public List<Equipment> getkey(String eid);
+	 public List<Equipment> selectByPrimaryKey(Equipment equ);
+	 public int getequcount(Equipment equ);
 }

@@ -16,8 +16,27 @@ public class Jilu implements Serializable {
     private String cname;
 
     private String tname;
+    
+    private int page;
+    private int limit;
 
-    private static final long serialVersionUID = 1L;
+    public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page2) {
+		this.page = page2;
+	}
+
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -101,6 +120,8 @@ public class Jilu implements Serializable {
         sb.append(", bname=").append(bname);
         sb.append(", cname=").append(cname);
         sb.append(", tname=").append(tname);
+        sb.append(", page=").append(page);
+        sb.append(", limit=").append(limit);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

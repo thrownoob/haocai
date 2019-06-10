@@ -30,7 +30,7 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     int updateByPrimaryKeySelective(HashMap<String, Object> map);
 
     int updateByPrimaryKey(Model record);
-    
+    //查询设备型号
     List<Cat> getalcr();
     //条件查询种类
     List<Tna> gettna(Tna ta);
@@ -38,12 +38,18 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     List<Tna> getnames();
     
     List<Cat> getcatdn(Cat cat);
+    //查询设备状态
+    List<Equipment> selectByPrimaryKey(Equipment equipment);
+    //查询设备条数
+    int getequcount(Equipment equ);
     
-    List<Equipment> getequ();
+    List<Equipment> getequ(String eid);
     
     List<Equipment> getdny(Equipment que);
     
-    List<Jilu> getjilu(String a);//根据EID查纪录
+    List<Jilu> getjilu(Jilu jilu);//根据EID查纪录
+    
+    int getcountjilu(Jilu jilu);
     
     User loginCheck(User user);
     
