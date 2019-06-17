@@ -21,8 +21,8 @@ public class Jilucon {
 Jiluservice jiluservice;
 @RequestMapping(value="/jiluins",produces = "application/json; charset=utf-8")
 @ResponseBody
-public int jiluins(Jilu jilu) {
-	int a=jiluservice.jiluins(jilu);
+public int jiluins(Jilu jilu,HttpServletRequest request) {
+	int a=jiluservice.jiluins(jilu,request);
 	return a;
 }
 @RequestMapping(value="/sejilu",produces = "application/json; charset=utf-8")

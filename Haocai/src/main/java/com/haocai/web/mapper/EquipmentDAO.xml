@@ -13,6 +13,15 @@
   <sql id="Base_Column_List">
     eid, categary, gettime, ard, usetime, yr, fixed
   </sql>
+    <select id="selecteq" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from equipment
+      where 1=1
+  <if test="_parameter!= null">
+       and eid =#{_parameter}
+      </if>
+    </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -142,8 +151,8 @@
       <if test="ard != null">
         ard = #{ard,jdbcType=VARCHAR},
       </if>
-      <if test="usetime != null">
-        usetime = #{usetime,jdbcType=VARCHAR},
+      <if test="usetime == null">
+        usetime =#{ard,jdbcType=VARCHAR},
       </if>
       <if test="yr == null">
         yr = "已启用",

@@ -3,7 +3,7 @@
     <% 
    if (session.getAttribute("user") == null) { 
 
-response.sendRedirect("http://192.168.1.92:8080/Haocai/login.jsp"); 
+response.sendRedirect("/Haocai/login.jsp"); 
 
 return; 
 } 

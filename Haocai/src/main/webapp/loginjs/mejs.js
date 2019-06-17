@@ -3,7 +3,7 @@ $(function () {
 	
 	$.ajax({//查询种类
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/cat/catsec",
+		url:"/Haocai/cat/catsec",
 		success:function(data){
 		
 			  var unitObj=document.getElementById("categary2");
@@ -20,7 +20,7 @@ $(function () {
 	    
 	$.ajax({//查询型号
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/tna/gettna",
+		url:"/Haocai/tna/gettna",
 		success:function(data){
 	
 			  var unitObj=document.getElementById("ename2");
@@ -37,7 +37,7 @@ $(function () {
 	
 		$.ajax({//查询id
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/equ/equget",
+		url:"/Haocai/equ/equget",
 		success:function(data){
 		
 			  var unitObj=document.getElementById("eid2");
@@ -121,7 +121,7 @@ $(function () {
     	alert(eid);
 	$.ajax({
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/jilu/sejilu?a="+eid,
+		url:"/Haocai/jilu/sejilu?a="+eid,
 		data: {},
 		dataType:"json",
 		success:function(data){
@@ -161,7 +161,7 @@ var methods = {
 		addjilu:function(){
 			$.ajax({
 				type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/jilu/jiluins",
+	    		url:"/Haocai/jilu/jiluins",
 	    		 data: $('#fd4').serialize(),
 	    		dataType:"json",
 	    		success:function(data){
@@ -169,7 +169,7 @@ var methods = {
 	    				alert("成");
 	    				$.ajax({
 	    					type:"post",
-	    		    		url:"http://192.168.1.92:8080/Haocai/equ/equupt",
+	    		    		url:"/Haocai/equ/equupt",
 	    		    		 data: $('#fd4').serialize(),
 	    		    		dataType:"json",
 	    		    		success:function(data1){
@@ -190,7 +190,7 @@ var methods = {
 		addcat:function(){
 			$.ajax({
 	    		type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/cat/catins",
+	    		url:"/Haocai/cat/catins",
 	    		 data: $('#fd2').serialize(),
 	    		dataType:"json",
 	    		 success : function(data){
@@ -210,7 +210,7 @@ var methods = {
 	addequ:function(){
 		$.ajax({
     		type:"post",
-    		url:"http://192.168.1.92:8080/Haocai/equ/equins",
+    		url:"/Haocai/equ/equins",
     		 data: $('#fd3').serialize(),
     		dataType:"json",
     		 success : function(data){
@@ -233,7 +233,7 @@ var methods = {
    s1equ:function(){
 	   $.ajax({
 		   type:"post",
-		   url:"http://192.168.1.92:8080/Haocai/equ/equdny",
+		   url:"/Haocai/equ/equdny",
 		   dataType:"json",
 		   data:$('#s1form').serialize(),
 		   success:function(data){
@@ -366,7 +366,7 @@ var methods = {
     addtna: function (){//添加类别
     	$.ajax({
     		type:"post",
-    		url:"http://192.168.1.92:8080/Haocai/tna/tnains",
+    		url:"/Haocai/tna/tnains",
     		 data: $('#fd1').serialize(),
     		dataType:"json",
     		 success : function(data){

@@ -27,7 +27,7 @@ var methods={
 		 $.ajax({
 	    		
 			 type:"post",
-			   url:"http://192.168.1.92:8080/Haocai/equ/equget",
+			   url:"/Haocai/equ/equget",
 			   dataType:"json",
 			   data:$('#eid').serialize(),
 			   async: false,
@@ -47,7 +47,7 @@ var methods={
 		
 		$.ajax({
 			type:"post",
-		    url:"http://192.168.1.92:8080/Haocai/equ/equins",
+		    url:"/Haocai/equ/equins",
 		    dataType:"json",
 		    data:$('#rukuqiyong').serialize(),
 		    success:function(data){
@@ -60,6 +60,47 @@ var methods={
 		})
 	
 	},
+	injilu:function(){
+		$.ajax({
+			type:"post",
+		    url:"/Haocai/jilu/jiluins",
+		    dataType:"json",
+		    data:$('#rukuqiyong').serialize(),
+		    success:function(data){
+		    	layer.msg("jilu成功");
+		    	
+		    },
+		    error:function(){
+		    	alert("记录添加错误");
+		    }
+		})
+	},
+	upqiyong:function(){
+		var r1=0;
+		$.ajax({
+			type:"post",
+		    url:"/Haocai/equ/equupt",
+		    dataType:"json",
+		    async : false,
+		    data:$('#rukuqiyong').serialize(),
+		    success:function(data){
+		    	r1=data
+		    	if(data==0){
+		    	
+		    		layer.msg("该设备已启用");
+		    	}else{
+			    	layer.msg("启用成功");
+		    	}
+
+		    	
+		    },
+		    error:function(){
+		    	alert("启用失败错误");
+		    }
+		});
+		return r1;
+	},
+	
 	rukuqiyong:function(){
 		if(methods.checkMustMes2()){
 			var a=$("input[name='sex']:checked").val();
@@ -68,6 +109,9 @@ var methods={
 				 if(methods.chaxuneid()==""){
 					
 				methods.inruku();
+				methods.injilu();
+				
+			
 						 
 					 
 						
@@ -75,6 +119,15 @@ var methods={
 					 layer.msg("编号库内已有");
 				 }
 			 }else{
+				 if(methods.chaxuneid()==""){
+					 layer.msg("未找到eid");
+				 }else{
+					
+					 if (methods.upqiyong()==1){
+						 methods.injilu();
+					 }
+					 
+				 }
 				 alert("启用");
 			 }
 		}

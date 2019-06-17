@@ -51,7 +51,7 @@
         //方法级渲染
         table.render({
             elem: '#LAY_table_user'
-                ,url: 'http://192.168.1.92:8080/Haocai/equ/equdny'
+                ,url: '/Haocai/equ/equdny'
                 	 ,toolbar: true
             ,cols: [[
                 {checkbox: true, fixed: true}
@@ -59,7 +59,7 @@
                 ,{field:'categary', title: '型号', width:100, sort: true}
                 ,{field:'ard', title: '现所在', width:100, sort: true,edit:true}
                 ,{field:'gettime', title: '入库时间', width:100}
-                ,{field:'usetime', title: '启用时间', width:100}
+                ,{field:'usetime', title: '归属', width:100}
                 ,{field:'yr', title: '状态', width:100}
                 ,{field:'fixed', title: '是否超出年限', width:80}
                 ,{fixed: 'right', title:'操作', toolbar: '#toolbarDemo', width:150}
@@ -106,14 +106,15 @@
                                 elem: '#jilutable'
                                 ,height: 300
                                 ,width:'100%'
-                               ,url: 'http://192.168.1.92:8080/Haocai/jilu/sejilu' //数据接口
+                               ,url: '/Haocai/jilu/sejilu' //数据接口
                                
                                 ,page: true //开启分页
                                 ,cols: [[ //表头
                                     {type:'radio'}
-                                  ,{field: 'eid', title: '模板名称', width:200, sort: true}
-                                  ,{field: 'detail', title: '描述', width:330}
-                                   ,{field: 'id', title: 'ID', width:200,hide:true}
+                                  ,{field: 'eid', title: '编号名称', width:200, sort: true}
+                                  ,{field: 'user', title: '操作员', width:330}
+                                   ,{field: 'sex', title: '操作', width:200}
+                                   ,{field: 'time', title: '时间', width:200}
                                   
                                 ]]
                               ,id: 'jilutab'

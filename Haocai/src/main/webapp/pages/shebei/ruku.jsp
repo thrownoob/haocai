@@ -103,7 +103,7 @@
    $(function () {
 		$.ajax({//查询型号 下拉选择
 			type:"post",
-			url:"http://192.168.1.92:8080/Haocai/cat/catsec",
+			url:"/Haocai/cat/catsec",
 			success:function(data){
 			
 				  var unitObj=document.getElementById("categary");

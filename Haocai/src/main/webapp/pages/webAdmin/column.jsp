@@ -62,7 +62,7 @@
         //方法级渲染
         table.render({
             elem: '#LAY_table_user'
-                ,url: 'http://192.168.1.92:8080/Haocai/jiluhaocai/getjiluhaocai'
+                ,url: '/Haocai/jiluhaocai/getjiluhaocai'
             ,cols: [[
                 {checkbox: true, fixed: true}
                 ,{field:'name', title: '型号', width:100, sort: true, fixed: true}

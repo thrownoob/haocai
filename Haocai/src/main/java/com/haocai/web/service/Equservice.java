@@ -12,5 +12,6 @@ public interface Equservice {
 	public int equupd(Equipment equ);
 	 public List<Equipment> getkey(String eid);
 	 public List<Equipment> selectByPrimaryKey(Equipment equ);
+
 	 public int getequcount(Equipment equ);
 }

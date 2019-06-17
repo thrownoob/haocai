@@ -19,14 +19,14 @@
 	    seachHaocaijilu: function(){
 	    	$.ajax({
 	    		type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/hao/getallhaocaibyname",
+	    		url:"/Haocai/hao/getallhaocaibyname",
 	    	    dataType:"json",
 	    	    data: $('#getallhaocaiform').serialize(),
 	    	    
 	    	    success : function(data){
 	    	    	alert(data);
 	    	    	  if(data== "368"){
-	      	     	window.location.href="http://192.168.1.92:8080/Haocai/";
+	      	     	window.location.href="/Haocai/";
 	    	    	  }
 //	    	    	 var tb = document.getElementById("tb");
 //	 	    	    //删除原先数据，2 为保留表头，值为表头行数减1
@@ -72,20 +72,20 @@
 	    	  if( methods.checkMustMes1()== true){
 	    	$.ajax({
 	    		type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/hao/gethaocaibyname",
+	    		url:"/Haocai/hao/gethaocaibyname",
 	    	    dataType:"json",
 	    	    data: $('#addform').serialize(),
 	    	    
 	    	    success : function(data){
 	    	    	alert(data);
 	    	    	  if(data== "368"){
-	      	     	window.location.href="http://192.168.1.92:8080/Haocai/";
+	      	     	window.location.href="/Haocai/";
 	    	    	  }
          
                             if(data==1){
                             	$.ajax({
                             		type:"post",
-                    	    		url:"http://192.168.1.92:8080/Haocai/hao/addhaocai",
+                    	    		url:"/Haocai/hao/addhaocai",
                     	    	    dataType:"json",
                     	    	    data: $('#addform').serialize(),
                     	    	    success : function(data1){
@@ -199,18 +199,18 @@
 	          
 	        		$.ajax({
 		        		type:"post",
-			    		url:"http://192.168.1.92:8080/Haocai/hao/downhaocai",
+			    		url:"/Haocai/hao/downhaocai",
 			    	    dataType:"json",
 			    	    data: $('#downup').serialize(),
 		        		success : function(data){
 		        			  if(data== "368"){
-		      	      	     	window.location.href="http://192.168.1.92:8080/Haocai/";
+		      	      	     	window.location.href="/Haocai/";
 		      	    	    	  }
 		        			alert(data);
 		        			if(data==1){
 		        		 $.ajax({
 		        		   type:"post",
-			    		   url:"http://192.168.1.92:8080/Haocai/jiluhaocai/addjilu",
+			    		   url:"/Haocai/jiluhaocai/addjilu",
 			    	       dataType:"json",
 			    	       data: $('#downup').serialize(),
 			    	       success : function(data){	    
@@ -237,16 +237,16 @@
                 if(aa=="0"){
 	        	$.ajax({
 	        		type:"post",
-		    		url:"http://192.168.1.92:8080/Haocai/hao/uphaocai",
+		    		url:"/Haocai/hao/uphaocai",
 		    	    dataType:"json",
 		    	    data: $('#downup').serialize(),
 		    	    success : function(data){
 		    	    	  if(data== "368"){
-		  	      	     	window.location.href="http://192.168.1.92:8080/Haocai/";
+		  	      	     	window.location.href="/Haocai/";
 		  	    	    	  }
 		    	    	$.ajax({
 		    	    		type:"post",
-				    		url:"http://192.168.1.92:8080/Haocai/jiluhaocai/addjilu",
+				    		url:"/Haocai/jiluhaocai/addjilu",
 				    	    dataType:"json",
 				    	    data: $('#downup').serialize(),
 				    	    success : function(data){

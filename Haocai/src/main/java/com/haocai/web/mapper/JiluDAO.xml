@@ -7,9 +7,12 @@
     <result column="bname" jdbcType="VARCHAR" property="bname" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
     <result column="tname" jdbcType="VARCHAR" property="tname" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, eid, bname, cname, tname
+    id, eid, bname, cname, tname, `user`, sex, `time`
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -17,7 +20,7 @@
     from jilu
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="getjilu" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="getjilu" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from jilu
@@ -40,10 +43,13 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.haocai.web.mod.Jilu">
-    insert into jilu (id, eid, bname, 
-      cname, tname)
-    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=VARCHAR}, #{bname,jdbcType=VARCHAR}, 
-      #{cname,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR})
+    insert into jilu ( eid, bname, 
+      cname, tname, `user`, 
+      sex, `time`)
+    values ( #{eid,jdbcType=VARCHAR}, '--', 
+       '--',  '--', #{user,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, now()
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.haocai.web.mod.Jilu">
     insert into jilu
@@ -63,6 +69,15 @@
       <if test="tname != null">
         tname,
       </if>
+      <if test="user != null">
+        `user`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -79,6 +94,15 @@
       </if>
       <if test="tname != null">
         #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -97,6 +121,15 @@
       <if test="tname != null">
         tname = #{tname,jdbcType=VARCHAR},
       </if>
+      <if test="user != null">
+        `user` = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -105,7 +138,10 @@
     set eid = #{eid,jdbcType=VARCHAR},
       bname = #{bname,jdbcType=VARCHAR},
       cname = #{cname,jdbcType=VARCHAR},
-      tname = #{tname,jdbcType=VARCHAR}
+      tname = #{tname,jdbcType=VARCHAR},
+      `user` = #{user,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

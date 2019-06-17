@@ -4,7 +4,7 @@ $(function () {
 
 $.ajax({//查询id
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/equ/equget",
+		url:"/Haocai/equ/equget",
 		success:function(data){
 		
 			  var unitObj=document.getElementById("eid");
@@ -95,7 +95,7 @@ $.ajax({//查询id
     function Login(){
 	$.ajax({
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/login",
+		url:"/Haocai/login",
 		dataTupe:"json",
 		data:$('#login').serialize(),
 		success:function(data){
@@ -107,7 +107,7 @@ $.ajax({//查询id
     	alert(eid);
 	$.ajax({
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/jilu/sejilu?a="+eid,
+		url:"/Haocai/jilu/sejilu?a="+eid,
 		data: {},
 		dataType:"json",
 		success:function(data){
@@ -171,7 +171,7 @@ var methods = {
 		addjilu:function(){
 			$.ajax({
 				type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/jilu/jiluins",
+	    		url:"/Haocai/jilu/jiluins",
 	    		 data: $('#fd4').serialize(),
 	    		dataType:"json",
 	    		success:function(data){
@@ -179,7 +179,7 @@ var methods = {
 	    				alert("成");
 	    				$.ajax({
 	    					type:"post",
-	    		    		url:"http://192.168.1.92:8080/Haocai/equ/equupt",
+	    		    		url:"/Haocai/equ/equupt",
 	    		    		 data: $('#fd4').serialize(),
 	    		    		dataType:"json",
 	    		    		success:function(data1){
@@ -201,7 +201,7 @@ var methods = {
 	addequ:function(){
 		$.ajax({
     		type:"post",
-    		url:"http://192.168.1.92:8080/Haocai/equ/equins",
+    		url:"/Haocai/equ/equins",
     		 data: $('#equ_add').serialize(),
     		dataType:"json",
     		 success : function(data){
@@ -224,7 +224,7 @@ var methods = {
    s1equ:function(){
 	   $.ajax({
 		   type:"post",
-		   url:"http://192.168.1.92:8080/Haocai/equ/equdny",
+		   url:"/Haocai/equ/equdny",
 		   dataType:"json",
 		   data:$('#equ_se').serialize(),
 		   success:function(data){
@@ -235,7 +235,7 @@ var methods = {
    	                message: "未登陆",
    	                
    	            })
-   	     	window.location.href="http://192.168.1.92:8080/Haocai/";
+   	     	window.location.href="/Haocai/";
 				}
 			   $.each(data,function(index,item){
 				 
@@ -265,7 +265,7 @@ var methods = {
 	   error:function(data){
 		
 		if(data== "1"){
-			window.location.href="http://192.168.1.92:8080/Haocai/Login.jsp";
+			window.location.href="/Haocai/Login.jsp";
 		}
 	   }
 		   })
@@ -368,7 +368,7 @@ var methods = {
     addtna: function (){//添加类别
     	$.ajax({
     		type:"post",
-    		url:"http://192.168.1.92:8080/Haocai/tna/tnains",
+    		url:"/Haocai/tna/tnains",
     		 data: $('#fd1').serialize(),
     		dataType:"json",
     		 success : function(data){

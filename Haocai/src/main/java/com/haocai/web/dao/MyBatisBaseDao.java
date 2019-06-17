@@ -26,6 +26,7 @@ public interface MyBatisBaseDao<Model, PK extends Serializable> {
     int insertSelective(HashMap<String, Object> map);
 
     Model selectByPrimaryKey(PK id);
+    Model selecteq(PK id);
 
     int updateByPrimaryKeySelective(HashMap<String, Object> map);
 

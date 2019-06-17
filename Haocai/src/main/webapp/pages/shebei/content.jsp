@@ -88,7 +88,7 @@
    	
 		$.ajax({//查询种类
 			type:"post",
-			url:"http://192.168.1.92:8080/Haocai/hao/getname",
+			url:"/Haocai/hao/getname",
 			success:function(data){
 			
 				  var unitObj=document.getElementById("name");

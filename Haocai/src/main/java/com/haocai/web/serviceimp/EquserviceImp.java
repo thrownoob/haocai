@@ -26,6 +26,7 @@ private EquipmentDAO euqdao;
 		  map.put("categary", equ.getCategary());
         	  map.put("eid", equ.getEid());
         	map.put("ard", equ.getArd());
+        	map.put("usetime", "仓库");
         	  map.put("yr", "未启用");
         	  map.put("fixed", "否");
         	  return this.euqdao.insertSelective(map);
@@ -43,17 +44,16 @@ private EquipmentDAO euqdao;
 
 	public int equupd(Equipment equ) {
 		HashMap<String, Object> map=new HashMap<String, Object>();
-		 Equipment mo=this.euqdao.selectByPrimaryKey(equ.getEid());
+		 Equipment mo=this.euqdao.selecteq(equ.getEid());
 		 
 		if(mo==null) {
-			return 0;
+			return 5;
 		}else {
 			String md=mo.getYr();
 			if(md!=null&&md.equals("已启用")) {
-				map.put("eid", equ.getEid());
-				map.put("ard", equ.getArd());
-				return this.euqdao.updateByPrimaryKeySelective(map);
-			}else {
+				return 0;
+			}else
+			if(md.equals("未启用")){
 			map.put("usetime", equ.getUsetime());
 			map.put("eid", equ.getEid());
 			map.put("yr", equ.getYr());
@@ -61,6 +61,8 @@ private EquipmentDAO euqdao;
 			return this.euqdao.updateByPrimaryKeySelective(map);
 			}
 		}
+		return 4;
+	
 		
 	}
 
@@ -78,5 +80,7 @@ private EquipmentDAO euqdao;
 		// TODO Auto-generated method stub
 		return this.euqdao.getequcount(equ);
 	}
+
+	
 
 }

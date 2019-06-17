@@ -23,13 +23,13 @@
 			alert("1");
 			$.ajax({
 				type:"post",
-				url:"http://192.168.1.92:8080/Haocai/login",
+				url:"login",
 				dataTupe:"json",
 				data:$('#loginform').serialize(),
 				success:function(data){
 
 				if(data.status=="ok"){
-					window.location.href="http://192.168.1.92:8080/Haocai/";
+					window.location.href="/Haocai/";
 				}
 				},
 			error:function(){

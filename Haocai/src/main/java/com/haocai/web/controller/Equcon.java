@@ -23,7 +23,7 @@ public class Equcon {
 	Equservice equservice;
 	@RequestMapping(value="/equins",produces = "application/json; charset=utf-8")
 	@ResponseBody
-    public  int getEquWithJson(Equipment equ) {
+    public  int getEquWithJson(Equipment equ) {//添加设备
 		
 
 
@@ -38,7 +38,7 @@ public class Equcon {
 	
 	@RequestMapping(value="/equget",produces = "application/json; charset=utf-8")
 	@ResponseBody
-    public  List<Equipment> getEqueid(String eid) {
+    public  List<Equipment> getEqueid(String eid) {//查询编号
 		
 		return this.equservice.getkey(eid);
 	}
@@ -52,7 +52,7 @@ public class Equcon {
 	
 @RequestMapping(value="/equdny",produces = "application/json; charset=utf-8")
 @ResponseBody
-  public  Map<String, Object>  equdny(Equipment equ,HttpServletRequest request) {
+  public  Map<String, Object>  equdny(Equipment equ,HttpServletRequest request) {//查询设备
 	int page1 =Integer.parseInt(request.getParameter("page"));
 	int limit1=Integer.parseInt(request.getParameter("limit"));
 	    int page=limit1*(page1-1);

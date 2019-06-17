@@ -26,7 +26,7 @@ $(function () {
 })
 	$.ajax({//查询型号
 		type:"post",
-		url:"http://192.168.1.92:8080/Haocai/tna/getname",
+		url:"/Haocai/tna/getname",
 		success:function(data){
 	
 			  var unitObj=document.getElementById("ename");
@@ -56,7 +56,7 @@ var methods = {
 	    addcat: function (){//添加型号
 	    	$.ajax({
 	    		type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/cat/catins",
+	    		url:"/Haocai/cat/catins",
 	    		 data: $('#form2').serialize(),
 	    		dataType:"json",
 	    		 success : function(data){
@@ -76,7 +76,7 @@ var methods = {
 seachName:function(){
     $.ajax({
     	type:"post",
-    	url:"http://192.168.1.92:8080/Haocai/cat/getallCats",
+    	url:"/Haocai/cat/getallCats",
     	dataType:"json",
     	data:$('#fd1').serialize(),
        

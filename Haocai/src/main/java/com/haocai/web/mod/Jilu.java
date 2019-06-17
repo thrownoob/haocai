@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author 
  */
 public class Jilu implements Serializable {
-    private Integer id;
+	private Integer id;
 
     private String eid;
 
@@ -16,7 +16,14 @@ public class Jilu implements Serializable {
     private String cname;
 
     private String tname;
-    
+
+    private String user;
+
+    private String sex;
+
+    private String time;
+
+     
     private int page;
     private int limit;
 
@@ -35,9 +42,6 @@ public class Jilu implements Serializable {
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
-
-	private static final long serialVersionUID = 1L;
-
     public Integer getId() {
         return id;
     }
@@ -78,6 +82,30 @@ public class Jilu implements Serializable {
         this.tname = tname;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -94,7 +122,10 @@ public class Jilu implements Serializable {
             && (this.getEid() == null ? other.getEid() == null : this.getEid().equals(other.getEid()))
             && (this.getBname() == null ? other.getBname() == null : this.getBname().equals(other.getBname()))
             && (this.getCname() == null ? other.getCname() == null : this.getCname().equals(other.getCname()))
-            && (this.getTname() == null ? other.getTname() == null : this.getTname().equals(other.getTname()));
+            && (this.getTname() == null ? other.getTname() == null : this.getTname().equals(other.getTname()))
+            && (this.getUser() == null ? other.getUser() == null : this.getUser().equals(other.getUser()))
+            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
+            && (this.getTime() == null ? other.getTime() == null : this.getTime().equals(other.getTime()));
     }
 
     @Override
@@ -106,6 +137,9 @@ public class Jilu implements Serializable {
         result = prime * result + ((getBname() == null) ? 0 : getBname().hashCode());
         result = prime * result + ((getCname() == null) ? 0 : getCname().hashCode());
         result = prime * result + ((getTname() == null) ? 0 : getTname().hashCode());
+        result = prime * result + ((getUser() == null) ? 0 : getUser().hashCode());
+        result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
+        result = prime * result + ((getTime() == null) ? 0 : getTime().hashCode());
         return result;
     }
 
@@ -122,7 +156,7 @@ public class Jilu implements Serializable {
         sb.append(", tname=").append(tname);
         sb.append(", page=").append(page);
         sb.append(", limit=").append(limit);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
+
         sb.append("]");
         return sb.toString();
     }

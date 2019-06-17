@@ -25,7 +25,7 @@ private JiluHaocaiDAO jiluhaocaidao;
 	public int addjilu(JiluHaocai jiluHaocai,HttpServletRequest request) {
 	
 		HttpSession   session   =   request.getSession(); 
-		System.out.println(session);
+		System.out.println(session);	
 		Object a=session.getAttribute("user");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("tid", Uuid.getUUID());

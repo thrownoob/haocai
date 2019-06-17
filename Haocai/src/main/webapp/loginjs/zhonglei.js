@@ -41,7 +41,7 @@ var methods = {
 	    addtna: function (){//添加类别
 	    	$.ajax({
 	    		type:"post",
-	    		url:"http://192.168.1.92:8080/Haocai/tna/tnains",
+	    		url:"/Haocai/tna/tnains",
 	    		 data: $('#form2').serialize(),
 	    		dataType:"json",
 	    		 success : function(data){
@@ -61,7 +61,7 @@ var methods = {
 seachName:function(){
     $.ajax({
     	type:"post",
-    	url:"http://192.168.1.92:8080/Haocai/tna/gettna",
+    	url:"/Haocai/tna/gettna",
     	dataType:"json",
     	data:$('#fd1').serialize(),
        
